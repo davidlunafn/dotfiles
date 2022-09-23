@@ -269,5 +269,7 @@ bar {
 }
 
 bindsym $mod+o exec killall -SIGUSR1 waybar
+bindsym $mod+space+n exec sh ~/.config/wofi/scripts/wofi-wifi.sh
+
 
 include /etc/sway/config.d/*
