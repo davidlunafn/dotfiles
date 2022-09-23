@@ -36,8 +36,11 @@
 		"disk",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
-		"tray"
-	],
+		"network",
+	    "custom/left-arrow-light",
+		"custom/left-arrow-dark",
+        "tray"
+],
 
 	"custom/left-arrow-dark": {
 		"format": "",
@@ -119,5 +122,17 @@
 	},
 	"tray": {
 		"icon-size": 16
-	}
+	},
+
+    "network": {
+        "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "Connected  ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{essid}",
+        "on-click-right": "bash ~/.config/wofi/scripts/wofi-wifi.sh"
+    }
+      
 }
