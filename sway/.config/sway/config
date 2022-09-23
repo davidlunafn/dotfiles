@@ -83,7 +83,7 @@ output HDMI-A-1 scale 1
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen befo
-
+exec_always dunst
 exec_always python3 ${HOME}/.config/sway/scripts/inactive-windows-transparency.py
 exec_always python3 ${HOME}/.config/sway/scripts/autoname-workspaces.py
 exec_always python3 ${HOME}/.config/sway/scripts/autotiling.py
