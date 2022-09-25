@@ -17,14 +17,22 @@ XOFF=-30
 LOC=3
 CACHE=~/.local/tmp/wifi-wofi
 WWIDTH=370
-MAXHEIGHT=1000
+MAXHEIGHT=500
+FONT="JetBrainsMono Nerd Font"
 
 LIST=$(nmcli --fields "$FIELDS" device wifi list | sed '/^--/d' | \
   awk -F "[  ]{2,}" '/SSID/ {next} {;
-      sub(/yes/, "", $3);
-      sub(/no/, "", $3);
-      if ($4 == "--") $4=""; else $4="";
-      printf "<tt>%-4s  %-26s </tt>%s   %s\n", $2,$1,$3,$4 }')
+      sub(/yes/, "✅", $3);
+      sub(/no/, "...", $3);
+      if ($4 == "--") $4=""; else $4="🔒";
+      if ($2 == "▂▄▆█") $2="°°°°";
+      else if ($2 == "▂▄▆_") $2=" °°°";
+      else if ($2 == "▂▄__") $2="  °°";
+      else if ($2 == "▂___") $2="   °";
+      else $2="    "
+      if (length($1) < 20) 
+      printf "%-7s %-20s \t\t %-5s   %s\n", $2,$1,$3,$4;
+  else printf "%-7s %-17s... \t\t %-5s   %s\n", $2,substr($1,0,17),$3,$4;}'); 
 
 # Bluetooth connections
 LISTB=$(nmcli --fields NAME,TYPE,ACTIVE con show | \
