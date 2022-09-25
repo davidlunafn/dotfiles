@@ -43,3 +43,11 @@ map('n','<C-a>',':jukit#send#section(0)<CR>',default_opts)
 
 -- Latex
 map('n','<leader>p','LLStartPreview<CR>',default_opts)
+
+-- Vista tag-viewer
+map('n', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
+map('i', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
+map('n', '<leader>m', ':Vista!!<CR>', default_opts)
+
+map('n', '<leader>tf', ':Telescope file_browser<CR>', default_opts)
+map('n', '<leader>ts', ':Telescope symbols<CR>', default_opts)

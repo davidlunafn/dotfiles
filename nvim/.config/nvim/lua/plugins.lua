@@ -81,5 +81,18 @@ use 'luk400/vim-jukit'
 -- LaTex
 use 'xuhdev/vim-latex-live-preview'
 
+--TodoCooments
+use {
+  "folke/todo-comments.nvim",
+  requires = "nvim-lua/plenary.nvim",
+}
+
+--vista
+use 'liuchengxu/vista.vim'
+
+-- autosave
+use "Pocco81/auto-save.nvim"
+
+
 end
 )
