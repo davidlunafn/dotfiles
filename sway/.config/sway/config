@@ -272,4 +272,20 @@ bindsym $mod+o exec killall -SIGUSR1 waybar
 bindsym $mod+space+n exec sh ~/.config/wofi/scripts/wofi-wifi.sh
 
 
+bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
+
+
 include /etc/sway/config.d/*
+
+
+#Volume control
+bindsym XF86AudioRaiseVolume exec amixer set Master 2%+ 
+bindsym XF86AudioLowerVolume exec amixer set Master 2%- 
+bindsym XF86AudioMute exec amixer set Master toggle
+
+# Brightneess
+bindsym XF86MonBrightnessUp exec brillo -A 2 -q
+bindsym XF86MonBrightnessDown exec brillo -U 2 -q
+
+# Night Mode
+bindsym $mod+m+n exec wlsunset -l 50 -L 14
