@@ -93,6 +93,18 @@ use 'liuchengxu/vista.vim'
 -- autosave
 use "Pocco81/auto-save.nvim"
 
+-- cheatsheet
+
+use {
+  'sudormrfbin/cheatsheet.nvim',
+
+  requires = {
+    {'nvim-telescope/telescope.nvim'},
+    {'nvim-lua/popup.nvim'},
+    {'nvim-lua/plenary.nvim'},
+  }
+}
+
 
 end
 )
