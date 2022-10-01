@@ -20,18 +20,18 @@ return {
 	window_close_confirmation = "NeverPrompt",
 	use_fancy_tab_bar = false,
 	enable_tab_bar = false,
-    enable_scroll_bar = true,
-    min_scroll_bar_height = '2cell',
-    scrollback_lines = 3500,
-    colors = {
-    scrollbar_thumb = 'white',
-    },
-	--window_padding = {
-	--	left = 2,
-	--	right = 2,
-    --	top = 2,
-	--	bottom = 2,
-	--},
+    enable_scroll_bar = false,
+    --min_scroll_bar_height = '2cell',
+    --scrollback_lines = 3500,
+    --colors = {
+    --scrollbar_thumb = 'white',
+    --},
+	window_padding = {
+		left = 2,
+		right = 2,
+    	top = 2,
+		bottom = 2,
+	},
 
 	-- Font and color scheme
 	font = font_with_fallback("JetBrainsMono Nerd Font"),
