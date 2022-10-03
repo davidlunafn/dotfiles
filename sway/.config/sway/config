@@ -279,15 +279,30 @@ include /etc/sway/config.d/*
 
 
 #Volume control
-bindsym XF86AudioRaiseVolume exec amixer set Master 2%+ 
-bindsym XF86AudioLowerVolume exec amixer set Master 2%- 
-#bindsym XF86AudioRaiseVolume exec ~/.config/sway/scripts/volume.sh up 
-#bindsym XF86AudioLowerVolume exec ~/.config/sway/scripts/volume.sh down 
-bindsym XF86AudioMute exec amixer set Master toggle
-
+#bindsym XF86AudioRaiseVolume exec amixer set Master 2%+ 
+#bindsym XF86AudioLowerVolume exec amixer set Master 2%- 
+bindsym XF86AudioRaiseVolume exec bash ~/.config/sway/scripts/volume.sh up 
+bindsym XF86AudioLowerVolume exec bash ~/.config/sway/scripts/volume.sh down 
+#bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioMute exec bash ~/.config/sway/scripts/volume.sh mute
 # Brightneess
 bindsym XF86MonBrightnessUp exec brillo -A 2 -q
 bindsym XF86MonBrightnessDown exec brillo -U 2 -q
 
 # Night Mode
 bindsym $mod+m+n exec wlsunset -l 50 -L 14
+
+# power
+bindsym $mod+Shift+p exec bash ~/.config/wofi/scripts/power.sh
+
+# wifi
+bindsym $mod+Shift+n exec bash ~/.config/wofi/scripts/wofi-wifi2.sh
+
+# bluetooth
+bindsym $mod+Shift+b exec bash ~/.config/wofi/scripts/bluetooth.sh
+
+# web-search
+bindsym $mod+Shift+s exec bash ~/.config/wofi/scripts/web-search.sh
+
+
+
