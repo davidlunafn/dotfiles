@@ -287,6 +287,11 @@ bindsym XF86AudioMute exec bash ~/.config/sway/scripts/volume.sh mute
 bindsym XF86MonBrightnessUp exec bash ~/.config/sway/scripts/brightness-control.sh up
 bindsym XF86MonBrightnessDown exec  bash ~/.config/sway/scripts/brightness-control.sh down
 
+bindsym $mod+b+p exec bash ~/.config/sway/scripts/brightness-control.sh up
+bindsym $mod+b+m exec  bash ~/.config/sway/scripts/brightness-control.sh down
+
+
+
 # Night Mode
 bindsym $mod+m+n exec wlsunset -l 50 -L 14
 
