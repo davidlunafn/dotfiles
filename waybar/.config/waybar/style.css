@@ -50,19 +50,19 @@ window#waybar {
 }
 
 #pulseaudio {
-	color: #268bd2;
+	color: #8dd3c7;
 }
 #memory {
-	color: #2aa198;
+	color: #b3de69;
 }
 #cpu {
-	color: #6c71c4;
+	color: #fdb462;
 }
 #battery {
-	color: #859900;
+	color: #fccde5;
 }
 #disk {
-	color: #b58900;
+	color: #ffffb3;
 }
 #network {
     color: #fb8072;
@@ -74,6 +74,7 @@ window#waybar {
 #cpu,
 #battery,
 #network,
+#tray,
 #disk {
 	padding: 0 10px;
 }
