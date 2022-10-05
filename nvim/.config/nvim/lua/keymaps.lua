@@ -42,7 +42,10 @@ map('n','<C-a>',':jukit#send#section(0)<CR>',default_opts)
 -- Send code within the current cell to output split (also saves the output if ipython is used and `g:jukit_save_output==1`). Argument: if 1, will move the cursor to the next cell below after sending the code to the split, otherwise cursor position stays the same.
 
 -- Latex
-map('n','<leader>p','LLStartPreview<CR>',default_opts)
+map('n','<leader>lv',':VimtexView<CR>',default_opts)
+map('n','<leader>lk',':VimtexCompile<CR>',default_opts)
+map('n','<leader>lc',':VimtexClean<CR>',default_opts)
+map('n','<leader>le',':VimtexErrors<CR>',default_opts)
 
 -- Vista tag-viewer
 map('n', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
@@ -50,4 +53,4 @@ map('i', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
 map('n', '<leader>m', ':Vista!!<CR>', default_opts)
 
 map('n', '<leader>tf', ':Telescope file_browser<CR>', default_opts)
-map('n', '<leader>ts', ':Telescope symbols<CR>', default_opts)
+

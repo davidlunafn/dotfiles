@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
  use 'tpope/vim-commentary'
 
 -- themes
- use "EdenEast/nightfox.nvim" 
+ use "EdenEast/nightfox.nvim"
 
 -- statusbar
 use 'feline-nvim/feline.nvim'
@@ -57,14 +57,14 @@ use 'kyazdani42/nvim-web-devicons'
 use {
   "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = { 
+    requires = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     }
 }
 
-use 'anuvyklack/hydra.nvim' 
+use 'anuvyklack/hydra.nvim'
 
 use({
     "ThePrimeagen/harpoon",
@@ -79,7 +79,8 @@ use({
 use 'luk400/vim-jukit'
 
 -- LaTex
-use 'xuhdev/vim-latex-live-preview'
+use 'lervag/vimtex'
+--use 'xuhdev/vim-latex-live-preview'
 
 --TodoCooments
 use {

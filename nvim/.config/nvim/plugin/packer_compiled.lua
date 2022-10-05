@@ -209,15 +209,15 @@ _G.packer_plugins = {
     path = "/home/david/.local/share/nvim/site/pack/packer/start/vim-jukit",
     url = "https://github.com/luk400/vim-jukit"
   },
-  ["vim-latex-live-preview"] = {
-    loaded = true,
-    path = "/home/david/.local/share/nvim/site/pack/packer/start/vim-latex-live-preview",
-    url = "https://github.com/xuhdev/vim-latex-live-preview"
-  },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/david/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  vimtex = {
+    loaded = true,
+    path = "/home/david/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
   },
   ["vista.vim"] = {
     loaded = true,

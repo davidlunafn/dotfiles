@@ -35,7 +35,7 @@ vim.cmd("colorscheme nightfox")
 --clipboard
 vim.o.clipboard = 'unnamedplus'
 
------------------------------------------------------------
+----------------------------------------------------------
 -- Import Lua modules
 -----------------------------------------------------------
 require("plugins")                       -- plugins
