@@ -74,7 +74,7 @@ return {
 		{ key = "-", mods = "SUPER", action = wezterm.action.DecreaseFontSize },
 		{ key = "c", mods = "CTRL", action = wezterm.action.Copy },
 		{ key = "v", mods = "CTRL", action = wezterm.action.Paste },
-        { key = 'h', mods = 'SHIFT', action = act.ScrollByLine(-1) },
-        { key = 'l', mods = 'SHIFT', action = act.ScrollByLine(1) },
+        { key = 'h', mods = 'ALT', action = act.ScrollByLine(-1) },
+        { key = 'l', mods = 'ALT', action = act.ScrollByLine(1) },
     },
 }
