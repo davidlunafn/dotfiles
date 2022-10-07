@@ -16,7 +16,7 @@ require('telescope').setup{
 
 			horizontal = {
 				preview_width = function(_, cols, _)
-					if cols > 200 then
+					if cols > 190 then
 						return math.floor(cols * 0.4)
 					else
 						return math.floor(cols * 0.6)
