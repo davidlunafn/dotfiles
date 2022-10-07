@@ -17,6 +17,16 @@ vim.keymap.set('n', '<leader>pp', require"telescope.builtin".git_files, {remap =
 vim.keymap.set('n', '<leader>po', require"telescope.builtin".find_files, {remap = false})
 vim.keymap.set('n', '<leader>gs', require"telescope.builtin".git_status, {remap = false})
 
+-- don't use arrow keys
+map('', '<up>', '<nop>', {noremap = true})
+map('', '<down>', '<nop>', {noremap = true})
+map('', '<left>', '<nop>', {noremap = true})
+map('', '<right>', '<nop>', {noremap = true})
+
+map('i', '<C-h>', '<left>', default_opts)
+map('i', '<C-j>', '<down>', default_opts)
+map('i', '<C-k>', '<up>', default_opts)
+map('i', '<C-l>', '<right>', default_opts)
 
 -- move around splits using Ctrl + {h,j,k,l}
 map('n', '<C-h>', '<C-w>h', default_opts)
