@@ -31,6 +31,7 @@ vim.o.smartindent = true
 
 --theme
 vim.cmd("colorscheme nightfox")
+--vim.cmd("colorscheme noctis")
 
 --clipboard
 vim.o.clipboard = 'unnamedplus'

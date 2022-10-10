@@ -46,6 +46,7 @@ return require('packer').startup(function(use)
 
 -- themes
  use "EdenEast/nightfox.nvim"
+ use { 'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' }} 
 
 -- statusbar
 use 'feline-nvim/feline.nvim'
@@ -80,7 +81,6 @@ use 'luk400/vim-jukit'
 
 -- LaTex
 use 'lervag/vimtex'
---use 'xuhdev/vim-latex-live-preview'
 
 --TodoCooments
 use {
@@ -106,6 +106,11 @@ use {
   }
 }
 
+-- comments
+
+use 'numToStr/Comment.nvim'
 
 end
 )
+
+
