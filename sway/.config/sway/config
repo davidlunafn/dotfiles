@@ -307,5 +307,6 @@ bindsym $mod+Shift+b exec bash ~/.config/wofi/scripts/bluetooth.sh
 # web-search
 bindsym $mod+Shift+s exec bash ~/.config/wofi/scripts/web-search.sh
 
-
+# fileexplore
+bindsym $mod+p exec bash $HOME/.config/wofi/scripts/fileexplore.sh
 
