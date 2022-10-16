@@ -29,7 +29,9 @@ set $term wezterm
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi -i -I --show drun
+set $menu rofi -show drun
+
+#wofi -i -I --show drun
 
 input * {
     xkb_layout "latam"
@@ -134,6 +136,7 @@ exec_always python3 ${HOME}/.config/sway/scripts/autotiling.py
 
     # Start your launcher
     bindsym Alt+space exec $menu
+    
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -296,17 +299,17 @@ bindsym $mod+b+m exec  bash ~/.config/sway/scripts/brightness-control.sh down
 bindsym $mod+m+n exec wlsunset -l 50 -L 14
 
 # power
-bindsym $mod+Shift+p exec bash ~/.config/wofi/scripts/power.sh
+bindsym $mod+Shift+p exec ~/.config/rofi/scripts/powermenu_t6
 
 # wifi
-bindsym $mod+Shift+n exec bash ~/.config/wofi/scripts/wofi-wifi2.sh
+bindsym $mod+Shift+n exec bash ~/.config/rofi/scripts/rofi-wifi.sh
 
 # bluetooth
-bindsym $mod+Shift+b exec bash ~/.config/wofi/scripts/bluetooth.sh
+bindsym $mod+Shift+b exec bash ~/.config/rofi/scripts/rofi-bluetooth.sh
 
 # web-search
-bindsym $mod+Shift+s exec bash ~/.config/wofi/scripts/web-search.sh
+bindsym $mod+Shift+s exec bash ~/.config/rofi/scripts/rofi-websearch.sh
 
 # fileexplore
-bindsym $mod+p exec bash $HOME/.config/wofi/scripts/fileexplore.sh
+bindsym $mod+p exec python $HOME/.config/wofi/scripts/fileexplore.py
 
