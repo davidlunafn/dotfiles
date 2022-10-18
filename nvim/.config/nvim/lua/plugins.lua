@@ -74,6 +74,10 @@ return require('packer').startup(function(use)
 
 -- statusbar
 use 'feline-nvim/feline.nvim'
+use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
 
 -- icons
 use 'kyazdani42/nvim-web-devicons'
