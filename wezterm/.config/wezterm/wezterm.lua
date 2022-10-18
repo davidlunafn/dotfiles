@@ -52,7 +52,7 @@ return {
 	font_size = 13,
 	use_resize_increments = true,
 	line_height = 1.0,
-	color_scheme = "nightfox",
+	color_scheme = "tokyonight",
 
 	-- Background
 	window_background_image = wezterm.home_dir .. "/.config/wezterm/2.jpg",
