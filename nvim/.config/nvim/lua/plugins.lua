@@ -12,10 +12,19 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use {
-	'nvim-telescope/telescope.nvim', tag = '0.1.0',
-	requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  use({
+		"nvim-telescope/telescope.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-telescope/telescope-fzy-native.nvim" },
+			{ "kyazdani42/nvim-web-devicons" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
+			{ "nvim-telescope/telescope-dap.nvim" },
+			{ "nvim-telescope/telescope-ui-select.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+		},
+	})
 
   use {
 	'nvim-treesitter/nvim-treesitter',
@@ -23,20 +32,33 @@ return require('packer').startup(function(use)
   }
 
   use 'nvim-treesitter/playground'
-  use {
-	  "williamboman/nvim-lsp-installer",
-	  'neovim/nvim-lspconfig',
-  }
 
-  use {
-        'hrsh7th/cmp-nvim-lsp',
-        requires = {
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/nvim-cmp',
-        }
-  }
+
+ 	-- LSP
+	use({
+		"neovim/nvim-lspconfig",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"jose-elias-alvarez/null-ls.nvim",
+        "williamboman/nvim-lsp-installer",
+	})
+
+	-- Completion
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-git",
+			"rcarriga/cmp-dap",
+			"saadparwaiz1/cmp_luasnip",
+			"onsails/lspkind-nvim",
+			"L3MON4D3/LuaSnip",
+			"windwp/nvim-autopairs",
+		},
+	})
 
  use 'lewis6991/gitsigns.nvim'
 
@@ -46,7 +68,8 @@ return require('packer').startup(function(use)
 
 -- themes
  use "EdenEast/nightfox.nvim"
- use { 'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' }} 
+ use { 'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' }}
+ use 'wuelnerdotexe/vim-enfocado'
 
 -- statusbar
 use 'feline-nvim/feline.nvim'
@@ -109,8 +132,15 @@ use {
 -- comments
 use 'numToStr/Comment.nvim'
 
--- LuaSnip
-use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
+
+use({
+	"mfussenegger/nvim-dap",
+	requires = {
+		"theHamsta/nvim-dap-virtual-text",
+		"rcarriga/nvim-dap-ui",
+		"leoluz/nvim-dap-go",
+	},
+})
 
 end
 )

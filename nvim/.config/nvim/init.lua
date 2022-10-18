@@ -13,7 +13,7 @@ Website: https://github.com/brainfucksec/neovim-lua
 
 -- variables
 vim.g.mapleader = " "
-
+vim.g.snippets = "luasnip"
 -----------------------------------------------------------
 -- Options
 -----------------------------------------------------------
@@ -30,6 +30,7 @@ vim.o.shiftwidth = 4
 vim.o.smartindent = true
 
 --theme
+--vim.cmd("colorscheme enfocado")
 vim.cmd("colorscheme nightfox")
 --vim.cmd("colorscheme noctis")
 

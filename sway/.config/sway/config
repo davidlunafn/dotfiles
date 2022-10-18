@@ -311,5 +311,5 @@ bindsym $mod+Shift+b exec bash ~/.config/rofi/scripts/rofi-bluetooth.sh
 bindsym $mod+Shift+s exec bash ~/.config/rofi/scripts/rofi-websearch.sh
 
 # fileexplore
-bindsym $mod+p exec python $HOME/.config/wofi/scripts/fileexplore.py
+bindsym $mod+p exec ~/.cargo/bin/tshort gui
 
