@@ -70,6 +70,7 @@ return require('packer').startup(function(use)
  use "EdenEast/nightfox.nvim"
  use { 'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' }}
  use 'wuelnerdotexe/vim-enfocado'
+ use 'folke/tokyonight.nvim'
 
 -- statusbar
 use 'feline-nvim/feline.nvim'

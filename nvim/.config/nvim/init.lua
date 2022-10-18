@@ -31,9 +31,10 @@ vim.o.smartindent = true
 
 --theme
 --vim.cmd("colorscheme enfocado")
-vim.cmd("colorscheme nightfox")
+--vim.cmd("colorscheme nightfox")
 --vim.cmd("colorscheme noctis")
-
+vim.cmd("colorscheme tokyonight-night")
+vim.g.lualine_color = "tokyonight"
 --clipboard
 vim.o.clipboard = 'unnamedplus'
 
