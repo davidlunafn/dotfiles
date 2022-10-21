@@ -26,12 +26,12 @@ return require('packer').startup(function(use)
 		},
 	})
 
-  use {
-	'nvim-treesitter/nvim-treesitter',
-	run = ':TSUpdate'
-  }
+  --use {
+--	'nvim-treesitter/nvim-treesitter',
+--	run = ':TSUpdate'
+ -- }
 
-  use 'nvim-treesitter/playground'
+  --use 'nvim-treesitter/playground'
 
 
  	-- LSP
@@ -137,6 +137,7 @@ use {
 -- comments
 use 'numToStr/Comment.nvim'
 
+-- TODO: pendiente saber uso
 
 use({
 	"mfussenegger/nvim-dap",
@@ -146,6 +147,16 @@ use({
 		"leoluz/nvim-dap-go",
 	},
 })
+
+--minimap 
+use "ziontee113/neo-minimap"
+
+-- treesitter
+use {
+    'nvim-treesitter/playground',
+    requires = { 'nvim-treesitter/nvim-treesitter' },
+    cmd = 'TSPlaygroundToggle',
+}
 
 end
 )
