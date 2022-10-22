@@ -5,7 +5,7 @@ local nm = require("neo-minimap")
 -- works only when you have only 1 neo-minimap config file
 nm.source_on_save("~/.config/nvim/after/plugin/neo-minimap.lua") -- optional
 
-nm.set({"zi", "zo", "zu"}, { "*.tex" }, {
+nm.set({"zi", "zo", "zu"}, { "lua" }, {
      events = { "BufEnter" },
 
      -- lua table, values inside can be type `string` or `number`
@@ -17,9 +17,9 @@ nm.set({"zi", "zo", "zu"}, { "*.tex" }, {
 
     -- optional
 	regex = { -- lua table, values inside can be type `table` or `number`
-		{ [[ \section{*} ]], [[ \subsection{*}]], [[ \subsubsection{*} ]]}, -- first set of regexes
-        { [[ \begin{figure} ]]},
-        { [[ \begin{align*} ]], [[ \begin{table*} ]]}, -- no regex
+		{ [[\section{.*}]], [[\subsection{.*}]], [[\subsubsection{.*}]]}, -- first set of regexes
+        { [[\begin{figure}]]},
+        { [[\begin{align.*}]], [[\begin{table.*}]], [[\begin{equation{.*}]]}, -- no regex
 	},
     -- you can have empty regex option if you want to use Treesitter queries only
 
@@ -35,10 +35,10 @@ nm.set({"zi", "zo", "zu"}, { "*.tex" }, {
     width = 44, -- optional, defaults to 44, width of the minimap
     height = 12, -- optional, defaults to 12, height of the minimap
     hl_group = "my_hl_group", -- highlight group of virtual text, optional, defaults to "DiagnosticWarn"
-    
+
     open_win_opts = {}, -- optional, for setting custom `nvim_open_win` options
     win_opts = {}, -- optional, for setting custom `nvim_win_set_option` options
-    
+
     -- change minimap's height with <C-h>
     -- this means default minimap height is 12
     -- minimap height will change to 36 after pressing <C-h>
@@ -53,4 +53,15 @@ nm.set({"zi", "zo"}, { "python" }, {
     { [[class.*:$]] },
     { [[def.*(]] }
   }
+})
+
+-- latex
+nm.set({ "zo", "zi","zu" }, "*.tex", {
+	events = { "BufEnter" },
+	query = {},
+	regex = {
+		{ [[\\section]], [[\\subsection]], [[\\subsubsection]] },
+		{ [[\\begin{figure.*}]], [[\\begin{table.*}]] },
+        { [[\\begin{align.*}]], [[\\begin{equation.*}]] }
+	},
 })
