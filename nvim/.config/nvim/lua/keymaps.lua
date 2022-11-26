@@ -16,6 +16,15 @@ local cmd = vim.cmd
 vim.keymap.set('n', '<leader>pp', require"telescope.builtin".git_files, {remap = false})
 vim.keymap.set('n', '<leader>po', require"telescope.builtin".find_files, {remap = false})
 vim.keymap.set('n', '<leader>gs', require"telescope.builtin".git_status, {remap = false})
+map('n', '<leader>tf', ':Telescope file_browser<CR>', default_opts)
+
+-- Floaterm
+map('i','<leader>t',':FloatermToggle<CR>',default_opts)
+map('t','<esc>','<C-\\><C-n>:FloatermToggle<CR>',default_opts)
+map('','<leader>tn',':FloatermNext<CR>',default_opts)
+map('','<leader>tp',':FloatermPrev<CR>',default_opts)
+map('','<leader>tt',':FloatermNew<CR>',default_opts)
+
 
 -- don't use arrow keys
 map('', '<up>', '<nop>', {noremap = true})
@@ -62,5 +71,4 @@ map('n', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
 map('i', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
 map('n', '<leader>m', ':Vista!!<CR>', default_opts)
 
-map('n', '<leader>tf', ':Telescope file_browser<CR>', default_opts)
 

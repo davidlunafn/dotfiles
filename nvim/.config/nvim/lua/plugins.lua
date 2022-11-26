@@ -105,16 +105,16 @@ use({
 
 
 -- jupyter notebooks
-use 'luk400/vim-jukit'
+-- use 'luk400/vim-jukit'
 
 -- LaTex
 use 'lervag/vimtex'
 
 --TodoCooments
-use {
-  "folke/todo-comments.nvim",
-  requires = "nvim-lua/plenary.nvim",
-}
+--use {
+--  "folke/todo-comments.nvim",
+--  requires = "nvim-lua/plenary.nvim",
+-- }
 
 --vista
 use 'liuchengxu/vista.vim'
@@ -137,6 +137,19 @@ use {
 -- comments
 use 'numToStr/Comment.nvim'
 
+-- todo-comments
+use {
+  "folke/todo-comments.nvim",
+  requires = "nvim-lua/plenary.nvim",
+  config = function()
+    require("todo-comments").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
+
 -- TODO: pendiente saber uso
 
 use({
@@ -157,6 +170,20 @@ use {
     requires = { 'nvim-treesitter/nvim-treesitter' },
     cmd = 'TSPlaygroundToggle',
 }
+
+-- markdown
+use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+})
+
+use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
+-- floaterm
+use 'voldikss/vim-floaterm'
+
+-- notebooks
+use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 
 end
 )
