@@ -10,11 +10,22 @@ Version: 0.7.1_rev3 - 2021/10/09
 Maintainer: Brainf+ck
 Website: https://github.com/brainfucksec/neovim-lua
 --]]
-
+-----------------------------------------------------------
 -- variables
+-----------------------------------------------------------
 vim.g.mapleader = " "
 vim.g.snippets = "luasnip"
+
+
 -----------------------------------------------------------
+-- Import Lua modules
+-----------------------------------------------------------
+--require("plugins")                       -- plugins
+require("lazy_packer")                     -- lazy
+require("keymaps")                         -- keymaps
+
+
+----------------------------------------------------------
 -- Options
 -----------------------------------------------------------
 
@@ -35,13 +46,6 @@ vim.o.smartindent = true
 --vim.cmd("colorscheme noctis")
 vim.cmd("colorscheme tokyonight-night")
 vim.g.lualine_color = "tokyonight"
---clipboard
 vim.o.clipboard = 'unnamedplus'
-
-----------------------------------------------------------
--- Import Lua modules
------------------------------------------------------------
-require("plugins")                       -- plugins
-require('keymaps')                       -- keymaps
-
+vim.g.default_font = "VictorMono Nerd Font:b"
 

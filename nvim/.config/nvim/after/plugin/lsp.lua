@@ -1,4 +1,10 @@
-require("nvim-lsp-installer").setup({
+local ok, lspconfigs = pcall(require, "nvim-lsp-installer")
+if not ok then
+	return
+end
+
+
+lspconfigs.setup({
 	automatic_installation = true,
 	ui = {
         icons = {
@@ -74,6 +80,12 @@ lspconfig.rust_analyzer.setup{
     },
 }
 
+-- TypeScript
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" }
+}
 
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,

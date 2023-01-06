@@ -1,5 +1,9 @@
 -- for shorthand usage
-local nm = require("neo-minimap")
+local ok, nm = pcall(require, "neo-minimap")
+if not ok then
+	return
+end
+
 
 -- will reload your neo-minimap config file on save
 -- works only when you have only 1 neo-minimap config file

@@ -109,12 +109,14 @@ use({
 
 -- LaTex
 use 'lervag/vimtex'
+use({
+    'f3fora/nvim-texlabconfig',
+    -- ft = { 'tex', 'bib' }, -- for lazy loading
+    run = 'go build'
+    -- run = 'go build -o ~/.bin/' if e.g. ~/.bin/ is in $PATH
+})
 
 --TodoCooments
---use {
---  "folke/todo-comments.nvim",
---  requires = "nvim-lua/plenary.nvim",
--- }
 
 --vista
 use 'liuchengxu/vista.vim'
@@ -138,17 +140,17 @@ use {
 use 'numToStr/Comment.nvim'
 
 -- todo-comments
-use {
-  "folke/todo-comments.nvim",
-  requires = "nvim-lua/plenary.nvim",
-  config = function()
-    require("todo-comments").setup {
+-- use {
+--  "folke/todo-comments.nvim",
+--  requires = "nvim-lua/plenary.nvim",
+--  config = function()
+--    require("todo-comments").setup {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
-    }
-  end
-}
+--    }
+--  end
+--}
 
 -- TODO: pendiente saber uso
 
@@ -183,7 +185,6 @@ use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = fun
 use 'voldikss/vim-floaterm'
 
 -- notebooks
-use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 
 end
 )

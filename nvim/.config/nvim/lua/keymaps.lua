@@ -19,7 +19,7 @@ vim.keymap.set('n', '<leader>gs', require"telescope.builtin".git_status, {remap 
 map('n', '<leader>tf', ':Telescope file_browser<CR>', default_opts)
 
 -- Floaterm
-map('i','<leader>t',':FloatermToggle<CR>',default_opts)
+map('','<leader>t',':FloatermToggle<CR>',default_opts)
 map('t','<esc>','<C-\\><C-n>:FloatermToggle<CR>',default_opts)
 map('','<leader>tn',':FloatermNext<CR>',default_opts)
 map('','<leader>tp',':FloatermPrev<CR>',default_opts)
