@@ -44,6 +44,12 @@ default_border pixel 2
 
 set $opacity 0.5
 
+input "1739:52545:SYN1B7F:00_06CB:CD41_Touchpad" {
+    dwt enabled
+    tap enabled
+    middle_emulation enabled
+    natural_scroll enabled
+}
 
 include /etc/sway/config-vars.d/*
 
