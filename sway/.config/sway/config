@@ -44,12 +44,18 @@ default_border pixel 2
 
 set $opacity 0.5
 
+#habilitar click en cualquier parte del Touchpad
 input "1739:52545:SYN1B7F:00_06CB:CD41_Touchpad" {
     dwt enabled
     tap enabled
     middle_emulation enabled
     natural_scroll enabled
 }
+
+
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 include /etc/sway/config-vars.d/*
 
