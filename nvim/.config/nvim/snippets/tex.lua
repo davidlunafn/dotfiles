@@ -17,17 +17,17 @@ local group = vim.api.nvim_create_augroup("Lua Snippets", { clear = true })
 local file_pattern = "*.lua"
 
 local function cs(trigger, nodes, opts) --{{{
-	local snippet = s(trigger, nodes)
-	local target_table = snippets
+    local snippet = s(trigger, nodes)
+    local target_table = snippets
 
-	local pattern = file_pattern
-	local keymaps = {}
+    local pattern = file_pattern
+    local keymaps = {}
 
-	if opts ~= nil then
-		-- check for custom pattern
-		if opts.pattern then
-			pattern = opts.pattern
-		end
+    if opts ~= nil then
+        -- check for custom pattern
+        if opts.pattern then
+            pattern = opts.pattern
+        end
 
 		-- if opts is a string
 		if type(opts) == "string" then
