@@ -5,7 +5,7 @@
 # Read `man 5 sway` for a complete reference.
 
 # border & title.. Must be set to border pixel for gaps to work
-for_window [title="^.*"] border pixel 1, title_format "%class >> %title"
+#for_window [title="^.*"] border pixel 1, title_format "%class >> %title"
 
 # class                 border   backgr.  text    indicator child_border
 
