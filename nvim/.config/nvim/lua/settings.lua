@@ -1,8 +1,8 @@
 vim.g.mapleader = " "
 vim.g.snippets = "luasnip"
 
-vim.g.david_color = "tokyonight"
-vim.g.lualine_color = "tokyonight"
+vim.g.david_color = "github-theme"
+vim.g.david_lualine_color = "material"
 
 local options = vim.o
 

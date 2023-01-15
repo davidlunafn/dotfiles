@@ -301,4 +301,7 @@ return {
             "nvim-telescope/telescope.nvim"
         }
     },
+    {
+        'projekt0n/github-nvim-theme'
+    },
 }

@@ -5,7 +5,7 @@ end
 
 lualine.setup({
 	options = {
-		theme = vim.g.alpha_lualine_color,
+		theme = vim.g.david_lualine_color,
 		icons_enabled = true,
 		globalstatus = true,
 	},
