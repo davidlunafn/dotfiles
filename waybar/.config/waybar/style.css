@@ -48,22 +48,13 @@ window#waybar {
 	border: #0b986a;
 }
 
-#pulseaudio {
-	color: #000000;
-}
-#memory {
-	color: #000000;
-}
-#cpu {
-	color: #000000;
-}
-#battery {
-	color: #000000;
-}
-#disk {
-	color: #000000;
-}
-#network {
+#pulseaudio
+#memory
+#cpu
+#battery
+#disk
+#network
+#tray {
     color: #000000;
 }
 

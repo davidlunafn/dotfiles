@@ -67,10 +67,8 @@ output * bg ~/Pictures/Wallpapers/WallpaperDog-20541958.jpg fill
 ##
 
 #exec_always python3 ${HOME}/.config/sway/scripts/inactive-windows-transparency.py
-exec_always python3 ${HOME}/.config/sway/scripts/autoname-workspaces.py
-exec_always python3 ${HOME}/.config/sway/scripts/autotiling.py
 
-
+#exec_always sh mount-disk.sh
 
 # Example configuration:
 #
@@ -98,6 +96,7 @@ output HDMI-A-1 scale 1
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen befo
 exec_always dunst
+exec_always nm-applet
 #exec_always python3 ${HOME}/.config/sway/scripts/inactive-windows-transparency.py
 exec_always python3 ${HOME}/.config/sway/scripts/autoname-workspaces.py
 exec_always python3 ${HOME}/.config/sway/scripts/autotiling.py
@@ -311,7 +310,7 @@ bindsym $mod+b+m exec  bash ~/.config/sway/scripts/brightness-control.sh down
 bindsym $mod+m+n exec wlsunset -l 50 -L 14
 
 # power
-bindsym $mod+Shift+p exec ~/.config/rofi/scripts/powermenu_t6
+bindsym $mod+Shift+p exec ~/.config/rofi/scripts/powermenu_t2
 
 # wifi
 bindsym $mod+Shift+n exec bash ~/.config/rofi/scripts/rofi-wifi.sh

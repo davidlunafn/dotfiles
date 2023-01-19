@@ -12,7 +12,6 @@
 		"memory",
 		"cpu",
 		"battery",
-		"network",
         "clock#2",
         "tray"
 ],
