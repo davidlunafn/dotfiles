@@ -2,24 +2,23 @@ require('telescope').setup{
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,
-    		prompt_prefix = "❯ ",
-		selection_caret = "❯ ",
-
+    		prompt_prefix = "❯  ",
+		selection_caret = "❯  ",
 		winblend = 0,
 
 		layout_strategy = "horizontal",
 		layout_config = {
 			width = 0.95,
-			height = 0.85,
+			height = 0.90,
 			-- preview_cutoff = 120,
 			prompt_position = "top",
 
 			horizontal = {
 				preview_width = function(_, cols, _)
 					if cols > 190 then
-						return math.floor(cols * 0.4)
+						return math.floor(cols * 0.45)
 					else
-						return math.floor(cols * 0.6)
+						return math.floor(cols * 0.5)
 					end
 				end,
 			},

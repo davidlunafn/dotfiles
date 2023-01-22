@@ -4,7 +4,7 @@ end
 
 require "nvim-treesitter.configs".setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust", "python", "cpp", "cmake", "bibtex", "css", "dockerfile", "go", "html", "javascript", "json", "latex", "make", "markdown", "markdown_inline", "r", "regex", "sql", "typescript" },
+  ensure_installed = { "c", "lua", "rust", "python", "cpp", "cmake", "bibtex", "css", "dockerfile", "go", "html", "javascript", "json", "latex", "make", "markdown", "markdown_inline", "r", "regex", "sql", "typescript", "vim" },
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,

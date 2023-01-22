@@ -304,4 +304,8 @@ return {
     {
         'projekt0n/github-nvim-theme'
     },
+    {
+        'luk400/vim-jukit',
+        lazy = true
+    },
 }
