@@ -1,0 +1,3 @@
+return {
+	"go-debug-adapter",
+}

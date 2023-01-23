@@ -1,4 +1,3 @@
-require("settings")
-require("lazy_packer")                     -- lazy
-require("keymaps")                         -- keymaps
+require("config")
+require("david.globals")
 require("david.colors")
