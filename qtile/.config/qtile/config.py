@@ -148,19 +148,6 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 
-def systray_monitors(ind):
-    n_monitors = len(get_monitors())
-    if n_monitors==2 & ind==2:
-        return widget.Systray()
-    elif n_monitors==1 & ind==1:
-        return widget.Systray()
-    else:
-        return None
-
-
-
-
-
 screens = [
     Screen(
         top=bar.Bar(
@@ -181,6 +168,7 @@ screens = [
                 # widget.StatusNotifier(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
+                widget.Spacer(length=20),
                 widget.Systray(),
                 widget.Wallpaper(directory="/home/david/Imágenes/wallpapers",label=""),
             ],
@@ -210,6 +198,7 @@ screens = [
                 # widget.StatusNotifier(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(default_text='󱄊', countdown_format='({})'),
+                widget.Spacer(length=20),
                 widget.Wallpaper(directory="/home/david/Imágenes/wallpapers",label=""),
             ],
             40,
