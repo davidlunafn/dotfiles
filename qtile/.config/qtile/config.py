@@ -37,8 +37,10 @@ terminal = "kitty"
 
 autostart = [
         "setxkbmap latam",
-        "xrandr --output eDP-1 --mode 1920x1080 --scale 0.75x0.75"
-]
+        "xrandr --output eDP-1 --mode 1920x1080 --scale 0.75x0.75",
+        #"feh -bg--fill Imágenes/wallpapers/img1.jpg",
+        #"picom &",
+        ]
 
 for x in autostart:
     os.system(x)
@@ -55,7 +57,9 @@ keys = [
     Key([mod], "m", lazy.layout.next(), desc="Move window focus to other window"),
     
 
-    Key([mod], "space", lazy.spawn("dmenu_run"), desc="Launch dmenu"),
+    Key([mod], "space", lazy.spawn("rofi -show drun"), desc="Launch rofi"),
+    Key([mod], "o", lazy.hide_show_bar("top"), desc="hide bar"),
+    
     
 
 
@@ -86,7 +90,7 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
@@ -118,7 +122,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2, margin=4),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -134,7 +138,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
+    font="JetBrainsMono Nerd Font",
     fontsize=20,
     padding=4,
 )
@@ -142,7 +146,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 #widget.CurrentLayout(),
                 widget.GroupBox(),
@@ -161,6 +165,7 @@ screens = [
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
                 widget.Systray(),
+                widget.Wallpaper(directory="/home/david/Imágenes/wallpapers",label=""),
             ],
             40,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
@@ -168,6 +173,7 @@ screens = [
         ),
     ),
 ]
+
 
 # Drag floating layouts.
 mouse = [
