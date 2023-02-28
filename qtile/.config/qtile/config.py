@@ -26,10 +26,13 @@
 
 
 import os
+from screeninfo import get_monitors
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+
+
 
 mod = "mod4"
 terminal = "kitty"
@@ -144,6 +147,20 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
+def systray_monitors(ind):
+    n_monitors = len(get_monitors())
+    if n_monitors==2 & ind==2:
+        return widget.Systray()
+    elif n_monitors==1 & ind==1:
+        return widget.Systray()
+    else:
+        return None
+
+
+
+
+
 screens = [
     Screen(
         top=bar.Bar(
@@ -165,6 +182,34 @@ screens = [
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
                 widget.Systray(),
+                widget.Wallpaper(directory="/home/david/Imágenes/wallpapers",label=""),
+            ],
+            40,
+            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+        ),
+    ),
+
+    Screen(
+        top=bar.Bar(
+            [
+                #widget.CurrentLayout(),
+                widget.GroupBox(hide_unused=True),
+                widget.Spacer(),
+                #widget.Prompt(),
+                #widget.WindowName(),
+                #widget.Chord(
+                #    chords_colors={
+                #        "launch": ("#ff0000", "#ffffff"),
+                #    },
+                #    name_transform=lambda name: name.upper(),
+                #),
+                #widget.TextBox("default config", name="default"),
+                #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                # widget.StatusNotifier(),
+                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.QuickExit(default_text='󱄊', countdown_format='({})'),
                 widget.Wallpaper(directory="/home/david/Imágenes/wallpapers",label=""),
             ],
             40,
