@@ -76,12 +76,12 @@ keys = [
 # Create labels for groups and assign them a default layout.
 groups = []
 
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "minus", "equal"]
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
-group_labels = ["", "", "", "", "", "", "", "", "ﭮ", "", "", "﨣"]
-# group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+#group_labels = ["", "", "", "", "", "", "", "", "ﭮ", ""]
+group_labels = ["", "", "", "", "", "", "", "", "", ""]
 
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
 # Add group names, labels, and default layouts to the groups object.
 for i in range(len(group_names)):
@@ -155,8 +155,22 @@ widget_defaults = dict(
     background=backgroundColor
 )
 
+
+
 def init_widgets_list(monitor_num):
     widgets_list = [
+        widget.TextBox(
+            text = "  ",
+            fontsize = 20,
+            font = "JetBrainsMono Nerd Font",
+            foreground = colors[7],
+        ),
+        widget.Sep(
+            linewidth = 1,
+            padding = 10,
+            foreground = colors[5],
+            background = backgroundColor
+        ),
         widget.GroupBox(
             font="JetBrainsMono Nerd Font",
             fontsize = 16,
@@ -168,7 +182,7 @@ def init_widgets_list(monitor_num):
             disable_drag = True,
             active = colors[4],
             inactive = foregroundColor,
-            hide_unused = False,
+            hide_unused = True,
             rounded = False,
             highlight_method = "line",
             highlight_color = [backgroundColor, backgroundColor],
@@ -182,6 +196,16 @@ def init_widgets_list(monitor_num):
             foreground = foregroundColor,
             background = backgroundColor,
             use_mouse_wheel = False
+        ),
+        widget.Sep(
+            linewidth = 1,
+            padding = 20,
+            foreground = colors[5],
+            background = backgroundColor
+        ),
+        widget.Sep(
+            linewidth = 0,
+            padding = 10
         ),
         widget.TaskList(
             icon_size = 0,
@@ -201,27 +225,23 @@ def init_widgets_list(monitor_num):
             txt_maximized = "🗖 ",
             txt_minimized = "🗕 ",
         ),
+         widget.Sep(
+            linewidth = 0,
+            padding = 10
+        ),
         widget.Sep(
             linewidth = 1,
             padding = 10,
             foreground = colors[5],
             background = backgroundColor
         ),
-        widget.OpenWeather(
-            app_key = "4cf3731a25d1d1f4e4a00207afd451a2",
-            cityid = "4997193",
-            format = '{icon} {main_temp}°',
-            metric = False,
-            font = "JetBrainsMono Nerd Font",
-            foreground = foregroundColor,
-        ),
-       widget.Sep(
+        widget.Sep(
             linewidth = 0,
             padding = 10
         ),
         widget.TextBox(
             text = " ",
-            fontsize = 14,
+            fontsize = 16,
             font = "JetBrainsMono Nerd Font",
             foreground = colors[7],
         ),
@@ -238,16 +258,37 @@ def init_widgets_list(monitor_num):
         ),
         widget.TextBox(
             text = "",
-            fontsize = 14,
+            fontsize = 18,
             font = "JetBrainsMono Nerd Font",
             foreground = colors[3],
         ),
         widget.Memory(
-            font = "JetBrainsMonoNerdFont",
+            font = "JetBrainsMono Nerd Font",
             foreground = foregroundColor,
-            format = '{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm}',
+            format = '{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
             measure_mem='G',
             padding = 5,
+        ),
+        widget.Sep(
+            linewidth = 0,
+            padding = 10
+        ),
+        widget.TextBox(
+            text = "󰂏 ",
+            fontsize = 18,
+            font = "JetBrainsMono Nerd Font",
+            foreground = colors[5],
+        ),
+        widget.Battery(
+                #fontsize=14,
+                font="JetBrainsMono Nerd Font",
+                low_percentage=0.25,
+                foreground=foregroundColor,
+                background=backgroundColor,
+                charge_char='',
+                discharge_char='',
+                update_interval=1,
+                format='{percent:2.0%}{char}',
         ),
         widget.Sep(
             linewidth = 0,
