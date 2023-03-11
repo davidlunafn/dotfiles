@@ -205,7 +205,7 @@ def init_widgets_list(monitor_num):
         ),
         widget.Sep(
             linewidth = 0,
-            padding = 10
+            padding = 5
         ),
         widget.TaskList(
             icon_size = 0,
@@ -296,7 +296,7 @@ def init_widgets_list(monitor_num):
         ),
         widget.TextBox(
             text = " ",
-            fontsize = 14,
+            fontsize = 16,
             font = "JetBrainsMono Nerd Font",
             foreground = colors[10],
         ),
@@ -310,6 +310,10 @@ def init_widgets_list(monitor_num):
             background = backgroundColor,
             icon_size = 20,
             padding = 4,
+        ),
+        widget.Sep(
+            linewidth = 0,
+            padding = 8,
         ),
         widget.Sep(
             linewidth = 1,
