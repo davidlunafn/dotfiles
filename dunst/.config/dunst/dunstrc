@@ -8,7 +8,7 @@
     # Follow monitor with mouse
     follow = mouse
 
-    width = 320
+    width = 120
     height = 260
     origin = top-right
     offset = 24x24
