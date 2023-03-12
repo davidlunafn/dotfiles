@@ -15,6 +15,7 @@ terminal = "kitty"
 autostart = [
         "setxkbmap latam",
         "xrandr --output eDP-1 --mode 1920x1080 --scale 0.75x0.75",
+        "picom &",
         #"feh -bg--fill Imágenes/wallpapers/img1.jpg",
         #"picom &",
         ]
@@ -281,14 +282,16 @@ def init_widgets_list(monitor_num):
         ),
         widget.Battery(
                 #fontsize=14,
-                font="JetBrainsMono Nerd Font",
-                low_percentage=0.25,
-                foreground=foregroundColor,
-                background=backgroundColor,
-                charge_char='',
-                discharge_char='',
-                update_interval=1,
-                format='{percent:2.0%}{char}',
+            font="JetBrainsMono Nerd Font",
+            low_percentage=0.25,
+            foreground=foregroundColor,
+            background=backgroundColor,
+            charge_char='',
+            full_char='',
+            unknown_char='',
+            discharge_char='',
+            update_interval=1,
+            format='{percent:2.0%}{char}',
         ),
         widget.Sep(
             linewidth = 0,
