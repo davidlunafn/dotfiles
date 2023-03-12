@@ -129,8 +129,8 @@ colors, backgroundColor, foregroundColor, workspaceColor, chordColor = colors.cu
 
 # Define layouts and layout themes
 layout_theme = {
-        "margin":5,
-        "border_width": 4,
+        "margin":8,
+        "border_width": 0,
         "border_focus": colors[2],
         "border_normal": backgroundColor
     }
