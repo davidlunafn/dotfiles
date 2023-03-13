@@ -3,7 +3,7 @@
     # --- Display --- #
 
     # The monitor to be displayed to
-    monitor = 0
+    monitor = all
 
     # Follow monitor with mouse
     follow = mouse
