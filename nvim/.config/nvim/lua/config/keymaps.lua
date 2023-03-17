@@ -44,7 +44,7 @@ map('n', '<C-l>', '<C-w>l', default_opts)
 
 
 -- neotree
-map('n', '<S-m>', ':Neotree toggle<CR>', default_opts)       -- open/close
+map('', '<leader>m', ':NeoTreeShow<CR>', default_opts)       -- open/close
 
 -- fast saving with <leader> and s
 map('n', '<C-s>', ':w<CR>', default_opts)
