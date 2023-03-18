@@ -18,29 +18,29 @@ function send_notification {
     volume=`get_volume`
     # Make the bar with the special character ─ (it's not dash -)
     # https://en.wikipedia.org/wiki/Box-drawing_character
-#bar=$(seq -s "─" $(($volume/5)) | sed 's/[0-9]//g')
-if [ "$volume" = "0" ]; then
-        icon_name="~/.config/sway/icons/Faba-notifications/notification-audio-volume-muted.svg"
-dunstify -a "Volume $volume" -i "$icon_name" -t 2000 "$bar" -r 555
+    if [ "$volume" = "0" ]; then
+        icon_name="~/.config/qtile/icons/Faba-notifications/notification-audio-volume-muted.svg"
+        dunstify -a "Volume $volume" -i "$icon_name" -t 2000 "$bar" -r 555
     else
 	if [  "$volume" -lt "10" ]; then
-	     icon_name="~/.config/sway/icons/Faba-notifications/notification-audio-volume-low.svg"
-dunstify -a "Volume $volume" -i "$icon_name" -t 2000 "$bar" -r 555
+	    icon_name="~/.config/qtile/icons/Faba-notifications/notification-audio-volume-low.svg"
+        dunstify -a "Volume $volume" -i "$icon_name" -t 2000 "$bar" -r 555
     else
         if [ "$volume" -lt "30" ]; then
-            icon_name="~/.config/sway/icons/Faba-notifications/notification-audio-volume-low.svg"
+            icon_name="~/.config/qtile/icons/Faba-notifications/notification-audio-volume-low.svg"
         else
             if [ "$volume" -lt "70" ]; then
-                icon_name="~/.config/sway/icons/Faba-notifications/notification-audio-volume-medium.svg"
+                icon_name="~/.config/qtile/icons/Faba-notifications/notification-audio-volume-medium.svg"
             else
-                icon_name="~/.config/sway/icons/Faba-notifications/notification-audio-volume-high.svg"
+                icon_name="~/.config/qtile/icons/Faba-notifications/notification-audio-volume-high.svg"
             fi
         fi
     fi
 fi
-bar=$(seq -s "─" 0 $(($volume/5)) | sed 's/[0-9]//g')
+bar=$(seq -s "█" 0 $(($volume/5)) | sed 's/[0-9]//g')
+name='Volumen '
 # Send the notification
-dunstify -a "Volume $volume" -i "$icon_name" -r 555 -u normal "$bar"
+dunstify -a "Volumen" "Volumen ${volume} %" -i "$icon_name" -r 555 -u normal "$bar"
 
 }
 

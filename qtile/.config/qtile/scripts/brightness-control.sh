@@ -9,7 +9,7 @@
 # https://gist.github.com/sebastiencs/5d7227f388d93374cebdf72e783fbd6a
 
 function get_brightness {
-  brillo | cut -d '.' -f 1
+  brightnessctl -m -d intel_backlight | awk -F, '{print substr($4, 0, length($4)-1)}'
 }
 
 function send_notification {
@@ -17,9 +17,10 @@ function send_notification {
   brightness=$(get_brightness)
   # Make the bar with the special character ─ (it's not dash -)
   # https://en.wikipedia.org/wiki/Box-drawing_character
-  bar=$(seq -s "─" 0 $((brightness / 5)) | sed 's/[0-9]//g')
+  bar=$(seq -s "█" 0 $((brightness / 5)) | sed 's/[0-9]//g')
+  icon="~/.config/qtile/icons/Faba-notifications/notification-display-brightness.svg"
   # Send the notification
-  dunstify -a "Brightness $brightness" -i "$icon" -r 5555 -u normal "$bar"
+  dunstify -a "Brig" "Brillo $brightness %" -i "$icon" -r 5555 -u normal "$bar"
 }
 
 case $1 in
