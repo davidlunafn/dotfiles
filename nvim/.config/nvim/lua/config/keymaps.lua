@@ -68,6 +68,6 @@ map('n','<leader>le',':VimtexErrors<CR>',default_opts)
 -- Vista tag-viewer
 map('n', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
 map('i', '<C-q>', ':Vista!!<CR>', default_opts)   -- open/close
-map('n', '<leader>m', ':Vista!!<CR>', default_opts)
+-- map('n', '<leader>m', ':Vista!!<CR>', default_opts)
 
 
