@@ -77,12 +77,12 @@ keys = [
 # Create labels for groups and assign them a default layout.
 groups = []
 
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+group_names = ["1", "2", "3", "4", "5"]
 
 #group_labels = ["", "", "", "", "", "", "", "", "ﭮ", ""]
-group_labels = ["", "", "", "", "", "", "", "", "", ""]
+group_labels = ["", "", "", "", ""]
 
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
 # Add group names, labels, and default layouts to the groups object.
 for i in range(len(group_names)):
@@ -92,6 +92,16 @@ for i in range(len(group_names)):
             layout=group_layouts[i].lower(),
             label=group_labels[i],
         ))
+
+
+@hook.subscribe.setgroup
+def changegroup():
+    for g in range(len(group_names)):
+        if qtile.groups[g].windows:
+            qtile.groups[g].label = "󰊠"
+        else:
+            qtile.groups[g].label = ""
+    qtile.current_group.label = "󰮯"
 
 # Add group specific keybindings
 for i in groups:
@@ -162,7 +172,7 @@ def init_widgets_list(monitor_num):
     widgets_list = [
         widget.TextBox(
             text = "  ",
-            fontsize = 20,
+            fontsize = 24,
             font = "JetBrainsMono Nerd Font",
             foreground = colors[7],
         ),
@@ -174,29 +184,18 @@ def init_widgets_list(monitor_num):
         ),
         widget.GroupBox(
             font="JetBrainsMono Nerd Font",
-            fontsize = 16,
-            margin_y = 2,
-            margin_x = 4,
-            padding_y = 6,
+            fontsize = 18,
             padding_x = 6,
-            borderwidth = 2,
-            disable_drag = True,
-            active = colors[4],
-            inactive = foregroundColor,
-            hide_unused = True,
-            rounded = False,
-            highlight_method = "line",
-            highlight_color = [backgroundColor, backgroundColor],
-            this_current_screen_border = colors[5],
-            this_screen_border = colors[7],
+            margin_x = 6,
+            active = "#66afbb",
+            inactive = '#4a4e5c',
+            center_aligned = True,
+            highlight_method = "text",
+            this_current_screen_border = "#e08e79",
             other_screen_border = colors[6],
             other_current_screen_border = colors[6],
-            urgent_alert_method = "line",
-            urgent_border = colors[9],
-            urgent_text = colors[1],
             foreground = foregroundColor,
-            background = backgroundColor,
-            use_mouse_wheel = False
+            background = "#162028",
         ),
         widget.Sep(
             linewidth = 1,
@@ -212,12 +211,12 @@ def init_widgets_list(monitor_num):
             icon_size = 0,
             font = "JetBrainsMono Nerd Font",
             foreground = colors[5],
-            background = colors[2],
+            background = '#162028',
             borderwidth = 0,
             border = colors[1],
             margin = 0,
             padding = 8,
-            highlight_method = "block",
+            highlight_method = "border",
             title_width_method = "uniform",
             urgent_alert_method = "border",
             urgent_border = colors[1],
@@ -350,8 +349,8 @@ screens = [
     Screen(
         top=bar.Bar(
             widgets=widgets_list,
-            size=36,
-            background=backgroundColor,
+            size=45,
+            background='#0b141a',
             margin=6, 
             opacity=0.8
         ),
@@ -359,7 +358,7 @@ screens = [
     Screen(
         top=bar.Bar(
             widgets=secondary_widgets_list,
-            size=36,
+            size=45,
             background=backgroundColor,
             margin=6, 
             opacity=0.8
