@@ -178,7 +178,7 @@ def init_widgets_list(monitor_num):
         ),
         widget.Sep(
             linewidth = 1,
-            padding = 10,
+            padding = 20,
             foreground = colors[5],
             background = backgroundColor
         ),
@@ -198,14 +198,18 @@ def init_widgets_list(monitor_num):
             background = "#162028",
         ),
         widget.Sep(
+            linewidth=0,
+            padding = 10,
+        ),
+        widget.Sep(
             linewidth = 1,
-            padding = 20,
+            padding = 0,
             foreground = colors[5],
             background = backgroundColor
         ),
         widget.Sep(
             linewidth = 0,
-            padding = 5
+            padding = 10
         ),
         widget.TaskList(
             icon_size = 0,
@@ -351,7 +355,7 @@ screens = [
             widgets=widgets_list,
             size=45,
             background='#0b141a',
-            margin=6, 
+            margin=10, 
             opacity=0.8
         ),
     ),
