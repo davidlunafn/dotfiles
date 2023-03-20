@@ -363,17 +363,17 @@ screens = [
         top=bar.Bar(
             widgets=secondary_widgets_list,
             size=45,
-            background=backgroundColor,
-            margin=6, 
+            background='#0b141a',
+            margin=10, 
             opacity=0.8
         ),
     ),
     Screen(
         top=bar.Bar(
             widgets=secondary_widgets_list_2,
-            size=36,
-            background=backgroundColor,
-            margin=6, 
+            size=45,
+            background='#0b141a',
+            margin=10, 
             opacity=0.8
         ),
     ),
