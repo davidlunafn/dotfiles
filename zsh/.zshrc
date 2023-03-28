@@ -7,8 +7,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export FZF_BASE="$HOME/fzf"
 
-export OPENAI_API_KEY="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" 
-
+#PATH ="$PATH:$HOME/.opam/default/bin/"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
