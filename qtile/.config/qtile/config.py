@@ -245,10 +245,10 @@ def init_widgets_list(monitor_num):
             padding = 10
         ),
         widget.TextBox(
-            text = " ",
-            fontsize = 16,
+            text = " ",
+            fontsize = 20,
             font = "JetBrainsMono Nerd Font",
-            foreground = colors[7],
+            foreground = colors[3],
         ),
         widget.CPU(
             font = "JetBrainsMono Nerd Font",
@@ -262,10 +262,10 @@ def init_widgets_list(monitor_num):
             padding = 10
         ),
         widget.TextBox(
-            text = "",
+            text = "",
             fontsize = 18,
             font = "JetBrainsMono Nerd Font",
-            foreground = colors[3],
+            foreground = colors[7],
         ),
         widget.Memory(
             font = "JetBrainsMono Nerd Font",
@@ -285,7 +285,6 @@ def init_widgets_list(monitor_num):
             foreground = colors[5],
         ),
         widget.Battery(
-                #fontsize=14,
             font="JetBrainsMono Nerd Font",
             low_percentage=0.25,
             foreground=foregroundColor,
@@ -342,7 +341,7 @@ def init_widgets_list(monitor_num):
 
 def init_secondary_widgets_list(monitor_num):
     secondary_widgets_list = init_widgets_list(monitor_num)
-    del secondary_widgets_list[16:17]
+    del secondary_widgets_list[21:22]
     return secondary_widgets_list
 
 widgets_list = init_widgets_list("1")
