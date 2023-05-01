@@ -16,8 +16,7 @@ autostart = [
         "setxkbmap latam",
         "xrandr --output eDP-1 --mode 1920x1080 --scale 0.75x0.75",
         "picom &",
-        #"feh -bg--fill Imágenes/wallpapers/img1.jpg",
-        #"picom &",
+	"xrandr --output HDMI-1 --same-as eDP-1"
         ]
 
 for x in autostart:
@@ -56,8 +55,8 @@ keys = [
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "shift"], "x", lazy.spawn("bash /home/david/.config/rofi/scripts/powermenu_t2"), desc="Shutdown Qtile"),
-    Key([mod, "shift"], "z", lazy.spawn("betterlockscreen -l blur"), desc="Shutdown Qtile"),
+    Key([mod, "shift"], "x", lazy.spawn("bash /home/david/.config/rofi/scripts/powermenu_t2"), desc="Powermenu"),
+    Key([mod, "shift"], "l", lazy.spawn("betterlockscreen -l blur"), desc="Lock Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     #Control de Volumen
@@ -122,18 +121,13 @@ groups.append(ScratchPad("scratchpad", [
     DropDown("term", "kitty --class=scratch", width=0.8, height=0.8, x=0.1, y=0.1, opacity=1),
     DropDown("ranger", "kitty --class=ranger -e ranger", width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
     DropDown("volume", "kitty --class=volume -e pulsemixer", width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
-    DropDown("mus", "kitty --class=mus -e ncmpcpp", width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
-    DropDown("news", "kitty --class=news -e newsboat", width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
-
 ]))
 
 # Scratchpad keybindings
 keys.extend([
-    Key([mod], "n", lazy.group['scratchpad'].dropdown_toggle('term')),
-    Key([mod], "c", lazy.group['scratchpad'].dropdown_toggle('ranger')),
+    Key([mod], "t", lazy.group['scratchpad'].dropdown_toggle('term')),
+    Key([mod], "f", lazy.group['scratchpad'].dropdown_toggle('ranger')),
     Key([mod], "v", lazy.group['scratchpad'].dropdown_toggle('volume')),
-    Key([mod], "m", lazy.group['scratchpad'].dropdown_toggle('mus')),
-    Key([mod], "b", lazy.group['scratchpad'].dropdown_toggle('news')),
 ])
 
 colors, backgroundColor, foregroundColor, workspaceColor, chordColor = colors.custom()

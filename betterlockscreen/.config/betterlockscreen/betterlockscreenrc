@@ -6,10 +6,10 @@ span_image=false
 lock_timeout=300
 fx_list=(dim blur dimblur pixel dimpixel color)
 dim_level=40
-blur_level=0.1
+blur_level=1
 pixel_scale=10,1000
 solid_color=333333
-wallpaper_cmd="betterlockscreen -u /home/david/Imágenes/wallpapers/wallpaperflare.com_wallpaper.jpg"
+wallpaper_cmd="betterlockscreen -u /home/david/Imágenes/wallpapers_lock/419498.jpg "
 quiet=false
 
 # default theme
