@@ -14,14 +14,17 @@ terminal = "kitty"
 
 autostart = [
         "setxkbmap latam",
+        "xset dpms 0 0 0",
+        "xset -dpms",
         "xrandr --output eDP-1 --mode 1920x1080 --scale 0.75x0.75",
         "picom &",
-	"xrandr --output HDMI-1 --same-as eDP-1"
+#	"xrandr --output HDMI-1 --same-as eDP-1"
         ]
 
 for x in autostart:
     os.system(x)
 
+lockout_time = 60
 
 keys = [
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -72,6 +75,8 @@ keys = [
     Key([], "print", lazy.spawn("scrot -s"), desc="Captura de pantalla"),
     Key([mod], "Print", lazy.spawn("scrot"), desc="Subir Volumen"),
 
+    #Control de monitores
+    Key([mod], "P", lazy.spawn("python3 /home/david/.config/qtile/scripts/monitors.py"), desc="Configurar segundo monitor"),
 ]
 
 # Create labels for groups and assign them a default layout.

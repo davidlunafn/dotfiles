@@ -5,7 +5,6 @@ end
 
 local function setup()
     githubtheme.setup({
-        theme_style = "dark",
 
         -- Change the "hint" color to the "orange" color, and make the "error" color bright red
         colors = {hint = "orange", error = "#ff0000"},
