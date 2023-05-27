@@ -10,9 +10,9 @@
 ;; Set up visible bell
 (setq viseble-bell t) 
 
-(set-face-attribute 'default nil :font "JetBrainsMono Nerd Font":height 180)
+(set-face-attribute 'default nil :font "JetBrainsMono Nerd Font":height 150)
 
-(load-theme 'wombat)
+(load-theme 'doom-palenight t )
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -66,6 +66,14 @@
   :config
   (ivy-mode 1))
 
+;; NOTE: first time you load this configuration on a new machine, you'll
+;; need to run the following command interactively so that mode line icons
+;; Display correctly
+
+;; M-x all-the-icons-install-fonts
+
+(use-package all-the-icons)
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
@@ -101,3 +109,52 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
+
+(use-package general
+  :config
+  (general-create-definer rune/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "C-SPC"
+    :global-prefix "C-SPC")
+  (rune/leader-keys
+   "t"  '(:ignore t  :which-key "toggles")
+   "tt" '(cousel-load-theme :which-key "choose theme")))
+
+
+(general-define-key
+ "C-M-j" 'counsel-switch-buffer)
+
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  (setq evit-want-C-i-jump nil)
+  :hook (evil-mode . rune/evil-hook)
+  :config
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+
+  ;; Use visual line motion even outside of visual-line-mode buffers
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previus-visual-line)
+
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+  (evil-set-initial-state 'dashboard-mode 'normal))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+(use-package hydra)
+
+(defhydra hydra-text-scale (:timeout 4)
+  "Scale text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("f" nil "finished" :exit t))
+
+(rune/leader-keys
+  "ts" '(hydra-text-scale/body :which-key "scale text"))
