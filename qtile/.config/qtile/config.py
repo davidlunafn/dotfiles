@@ -75,6 +75,8 @@ keys = [
     Key([], "print", lazy.spawn("scrot -s"), desc="Captura de pantalla"),
     Key([mod], "Print", lazy.spawn("scrot"), desc="Subir Volumen"),
 
+    # Run emacs
+    Key([mod], "e", lazy.spawn("emacs"), desc="run emacs"),
     #Control de monitores
     Key([mod], "P", lazy.spawn("python3 /home/david/.config/qtile/scripts/monitors.py"), desc="Configurar segundo monitor"),
 ]
