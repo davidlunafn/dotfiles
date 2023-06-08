@@ -5,23 +5,31 @@
 (defvar efs/default-font-size 150)
 (defvar efs/default-variable-font-size 150)
 
+;; Make frame transparency overridable
+(defvar efs/frame-transparency '(70 . 70))
+
 ;; Initialize package sources
-(require 'package)
+ (require 'package)
 
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+ (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                          ("org" . "https://orgmode.org/elpa/")
+                          ("elpa" . "https://elpa.gnu.org/packages/")))
 
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
+ (package-initialize)
+ (unless package-archive-contents
+ (package-refresh-contents))
 
-  ;; Initialize use-package on non-Linux platforms
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+   ;; Initialize use-package on non-Linux platforms
+ (unless (package-installed-p 'use-package)
+   (package-install 'use-package))
 
-(require 'use-package)
-(setq use-package-always-ensure t)
+ (require 'use-package)
+ (setq use-package-always-ensure t)
+
+
+; (require exec-path-from-shell)
+; (when (memq window-system '(mac ns x))
+;   ("exec-path-from-shell-initialize"))
 
 (setq inhibit-startup-message t)
 
@@ -38,10 +46,17 @@
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
+;; Set frame transparency
+(set-frame-parameter (selected-frame) 'alpha efs/frame-transparency)
+(add-to-list 'default-frame-alist `(alpha . ,efs/frame-transparency))
+(set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
                 term-mode-hook
                 shell-mode-hook
+                treemacs-mode-hook
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -51,7 +66,7 @@
 (set-face-attribute 'fixed-pitch nil :font "JetBrainsMono Nerd Font" :height efs/default-font-size)
 
 ;; Set the variable pitch face
-(set-face-attribute 'variable-pitch nil :font "JetBrainsMono Nerd Font" :height efs/default-font-size :weight 'regular)
+(set-face-attribute 'variable-pitch nil :font "JetBrainsMono Nerd Font" :height efs/default-variable-font-size :weight 'regular)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -133,6 +148,8 @@
   :bind (("C-M-j" . 'counsel-switch-buffer)
          :map minibuffer-local-map
          ("C-r" . 'counsel-minibuffer-history))
+  :custom
+  (counsel-linux-app-format-function #'counsel-linux-app-format-function-name-only)
   :config
   (counsel-mode 1))
 
@@ -172,7 +189,7 @@
                   (org-level-6 . 1.1)
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
-    (set-face-attribute (car face) nil :font "JetBrainsMono Nerd Font" :weight 'regular :height (cdr face)))
+    (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
 
   ;; Ensure that anything that should be fixed-pitch in Org files appears that way
   (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
@@ -189,6 +206,7 @@
   (visual-line-mode 1))
 
 (use-package org
+  :pin org
   :hook (org-mode . efs/org-mode-setup)
   :config
   (setq org-ellipsis " ▾")
@@ -330,16 +348,105 @@
     (python . t)))
 
 (push '("conf-unix" . conf-unix) org-src-lang-modes)
+(setq org-babel-python-command "python3")
+
+(defun my-org-confirm-babel-evaluate (lang body)
+    (not (member lang '("emacs-lisp" "python" "sh"))))
+
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+
+;; This is needed as of Org 9.2
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "src python :session :results output"))
 
 ;; Automatically tangle our Emacs.org config file when we save it
 (defun efs/org-babel-tangle-config ()
-  (when (string-equal (buffer-file-name)
+  (when (string-equal (file-name-directory (buffer-file-name))
                       (expand-file-name "~/.emacs.d/emacs.org"))
+
     ;; Dynamic scoping to the rescue
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
+
+(defun efs/lsp-mode-setup ()
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :hook (lsp-mode . efs/lsp-mode-setup)
+  :init
+  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+  :config
+  (lsp-enable-which-key-integration t))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom))
+
+(use-package lsp-treemacs
+  :after lsp)
+
+(use-package lsp-ivy)
+
+(use-package dap-mode
+  ;; Uncomment the config below if you want all UI panes to be hidden by default!
+  ;; :custom
+  ;; (lsp-enable-dap-auto-configure nil)
+  ;; :config
+  ;; (dap-ui-mode 1)
+
+  :config
+  ;; Set up Node debugging
+  (require 'dap-node)
+  (dap-node-setup) ;; Automatically installs Node debug adapter if needed
+
+  ;; Bind `C-c l d` to `dap-hydra` for easy access
+  (general-define-key
+    :keymaps 'lsp-mode-map
+    :prefix lsp-keymap-prefix
+    "d" '(dap-hydra t :wk "debugger")))
+
+(use-package typescript-mode
+  :mode "\\.ts\\'"
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
+
+(use-package python-mode
+  :ensure t
+  :hook (python-mode . lsp-deferred)
+  :custom
+  ;; NOTE: Set these if Python 3 is called "python3" on your system!
+  (python-shell-interpreter "python3")
+  (dap-python-executable "python3")
+  (dap-python-debugger 'debugpy)
+  :config
+  (require 'dap-python))
+
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
+
+(use-package company
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
+  :bind (:map company-active-map
+         ("<tab>" . company-complete-selection))
+        (:map lsp-mode-map
+         ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 (use-package projectile
   :diminish projectile-mode
@@ -360,13 +467,21 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-;(use-package evil-magit
-;  :after magit)
-
 ;; NOTE: Make sure to configure a GitHub token before using this package!
 ;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
 ;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
 (use-package forge)
 
+(use-package evil-nerd-commenter
+  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package ein)
+(setq ein:output-area-inlined-images t)
+(setq ein:slice-image t)
+
+;;(require 'ein)
+;;(require 'ein-notebook)
+;;(require 'ein-subpackages)

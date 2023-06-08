@@ -1,0 +1,6 @@
+ls
+git status
+git commit -m "install org-mode, change init.el file to emacs.org"
+git push
+clear
+clear

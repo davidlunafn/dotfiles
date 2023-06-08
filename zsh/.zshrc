@@ -118,7 +118,7 @@ source $ZSH/oh-my-zsh.sh
 
 # source extra files
 #for f in ~/.local/zsh/*; do source $f; done
-
+alias python='python3'
 #alias ta='tmux attach'
 #alias mine='sudo chown -R $USER:$USER .'
 #alias "docker-compose -T"="docker-compose"
