@@ -13,13 +13,13 @@ mod = "mod4"
 terminal = "kitty"
 
 autostart = [
-        "setxkbmap latam",
-        "xset dpms 0 0 0",
-        "xset -dpms",
-        "xrandr --output eDP-1 --mode 1920x1080 --scale 0.75x0.75",
-        "picom &",
-#	"xrandr --output HDMI-1 --same-as eDP-1"
-        ]
+    "setxkbmap latam",
+    "xset dpms 0 0 0",
+    "xset -dpms",
+    "xrandr --output eDP-1 --mode 1920x1080 --scale 0.75x0.75",
+    "picom &",
+    # "xrandr --output HDMI-1 --same-as eDP-1"
+]
 
 for x in autostart:
     os.system(x)
@@ -31,22 +31,27 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "m", lazy.layout.next(), desc="Move window focus to other window"),
+    Key([mod], "m", lazy.layout.next(),
+        desc="Move window focus to other window"),
 
     Key([mod], "space", lazy.spawn("rofi -show drun"), desc="Launch rofi"),
     Key([mod], "o", lazy.hide_show_bar("top"), desc="hide bar"),
-    
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
+        desc="Move window to the left"),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
+        desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+
+    Key([mod, "control"], "h", lazy.layout.grow_left(),
+        desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(),
+        desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    
+
     Key(
         [mod, "shift"],
         "Return",
@@ -54,31 +59,39 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    
+
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "shift"], "x", lazy.spawn("bash /home/david/.config/rofi/scripts/powermenu_t2"), desc="Powermenu"),
-    Key([mod, "shift"], "l", lazy.spawn("betterlockscreen -l blur"), desc="Lock Qtile"),
+    Key([mod, "shift"], "x", lazy.spawn(
+        "bash /home/david/.config/rofi/scripts/powermenu_t2"), desc="Powermenu"),
+    Key([mod, "shift"], "l", lazy.spawn(
+        "betterlockscreen -l blur"), desc="Lock Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
-    #Control de Volumen
-    Key([], "XF86AudioLowerVolume", lazy.spawn("bash /home/david/.config/qtile/scripts/volume.sh down"), desc="Bajar Volumen"),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("bash /home/david/.config/qtile/scripts/volume.sh up"), desc="Subir Volumen"),
-    Key([], "XF86AudioMute", lazy.spawn("bash /home/david/.config/qtile/scripts/volume.sh mute"), desc="Mute Volumen"),
+    # Control de Volumen
+    Key([], "XF86AudioLowerVolume", lazy.spawn(
+        "bash /home/david/.config/qtile/scripts/volume.sh down"), desc="Bajar Volumen"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn(
+        "bash /home/david/.config/qtile/scripts/volume.sh up"), desc="Subir Volumen"),
+    Key([], "XF86AudioMute", lazy.spawn(
+        "bash /home/david/.config/qtile/scripts/volume.sh mute"), desc="Mute Volumen"),
 
     # Control de brillo
-    Key([], "XF86MonBrightnessUp", lazy.spawn("bash /home/david/.config/qtile/scripts/brightness-control.sh up"), desc="Subir Brillo"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("bash /home/david/.config/qtile/scripts/brightness-control.sh down"), desc="Bajar Brillo"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn(
+        "bash /home/david/.config/qtile/scripts/brightness-control.sh up"), desc="Subir Brillo"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn(
+        "bash /home/david/.config/qtile/scripts/brightness-control.sh down"), desc="Bajar Brillo"),
 
-    #Captura de pantalla
+    # Captura de pantalla
     Key([], "print", lazy.spawn("scrot -s"), desc="Captura de pantalla"),
     Key([mod], "Print", lazy.spawn("scrot"), desc="Subir Volumen"),
 
     # Run emacs
-    Key([mod], "e", lazy.spawn("emacs"), desc="run emacs"),
-    #Control de monitores
-    Key([mod], "P", lazy.spawn("python3 /home/david/.config/qtile/scripts/monitors.py"), desc="Configurar segundo monitor"),
+    Key([mod], "e", lazy.spawn("code"), desc="run vscode"),
+    # Control de monitores
+    Key([mod], "P", lazy.spawn("python3 /home/david/.config/qtile/scripts/monitors.py"),
+        desc="Configurar segundo monitor"),
 ]
 
 # Create labels for groups and assign them a default layout.
@@ -86,10 +99,11 @@ groups = []
 
 group_names = ["1", "2", "3", "4", "5"]
 
-#group_labels = ["", "", "", "", "", "", "", "", "ﭮ", ""]
+# group_labels = ["", "", "", "", "", "", "", "", "ﭮ", ""]
 group_labels = ["", "", "", "", ""]
 
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall", "monadtall",
+                 "monadtall", "monadtall", "monadtall"]
 
 # Add group names, labels, and default layouts to the groups object.
 for i in range(len(group_names)):
@@ -110,6 +124,7 @@ def changegroup():
             qtile.groups[g].label = ""
     qtile.current_group.label = "󰮯"
 
+
 # Add group specific keybindings
 for i in groups:
     keys.extend([
@@ -125,9 +140,12 @@ for i in groups:
 
 # Define scratchpads
 groups.append(ScratchPad("scratchpad", [
-    DropDown("term", "kitty --class=scratch", width=0.8, height=0.8, x=0.1, y=0.1, opacity=1),
-    DropDown("ranger", "kitty --class=ranger -e ranger", width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
-    DropDown("volume", "kitty --class=volume -e pulsemixer", width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
+    DropDown("term", "kitty --class=scratch", width=0.8,
+             height=0.8, x=0.1, y=0.1, opacity=1),
+    DropDown("ranger", "kitty --class=ranger -e ranger",
+             width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
+    DropDown("volume", "kitty --class=volume -e pulsemixer",
+             width=0.8, height=0.8, x=0.1, y=0.1, opacity=0.9),
 ]))
 
 # Scratchpad keybindings
@@ -141,11 +159,11 @@ colors, backgroundColor, foregroundColor, workspaceColor, chordColor = colors.cu
 
 # Define layouts and layout themes
 layout_theme = {
-        "margin":8,
-        "border_width": 0,
-        "border_focus": colors[2],
-        "border_normal": backgroundColor
-    }
+    "margin": 8,
+    "border_width": 0,
+    "border_focus": colors[2],
+    "border_normal": backgroundColor
+}
 
 layouts = [
     layout.MonadTall(**layout_theme),
@@ -156,6 +174,8 @@ layouts = [
 ]
 
 # Mouse callback functions
+
+
 def launch_menu():
     qtile.cmd_spawn("rofi -show drun -show-icons")
 
@@ -163,128 +183,127 @@ def launch_menu():
 # Define Widgets
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font",
-    fontsize = 16,
-    padding = 2,
+    fontsize=16,
+    padding=2,
     background=backgroundColor
 )
-
 
 
 def init_widgets_list(monitor_num):
     widgets_list = [
         widget.TextBox(
-            text = "  ",
-            fontsize = 24,
-            font = "JetBrainsMono Nerd Font",
-            foreground = colors[7],
+            text="  ",
+            fontsize=24,
+            font="JetBrainsMono Nerd Font",
+            foreground=colors[7],
         ),
         widget.Sep(
-            linewidth = 1,
-            padding = 20,
-            foreground = colors[5],
-            background = backgroundColor
+            linewidth=1,
+            padding=20,
+            foreground=colors[5],
+            background=backgroundColor
         ),
         widget.GroupBox(
             font="JetBrainsMono Nerd Font",
-            fontsize = 18,
-            padding_x = 6,
-            margin_x = 6,
-            active = "#66afbb",
-            inactive = '#4a4e5c',
-            center_aligned = True,
-            highlight_method = "text",
-            this_screen_border = "#4a4e5c",
-            this_current_screen_border = "#e08e79",
-            other_screen_border = "#4a4e5c",
-            other_current_screen_border = "#4a4e5c",
-            foreground = foregroundColor,
-            background = "#162028",
+            fontsize=18,
+            padding_x=6,
+            margin_x=6,
+            active="#66afbb",
+            inactive='#4a4e5c',
+            center_aligned=True,
+            highlight_method="text",
+            this_screen_border="#4a4e5c",
+            this_current_screen_border="#e08e79",
+            other_screen_border="#4a4e5c",
+            other_current_screen_border="#4a4e5c",
+            foreground=foregroundColor,
+            background="#162028",
         ),
         widget.Sep(
             linewidth=0,
-            padding = 10,
+            padding=10,
         ),
         widget.Sep(
-            linewidth = 1,
-            padding = 0,
-            foreground = colors[5],
-            background = backgroundColor
+            linewidth=1,
+            padding=0,
+            foreground=colors[5],
+            background=backgroundColor
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10
+            linewidth=0,
+            padding=10
         ),
         widget.TaskList(
-            icon_size = 0,
-            font = "JetBrainsMono Nerd Font",
-            foreground = colors[5],
-            background = '#162028',
-            borderwidth = 0,
-            border = colors[1],
-            margin = 0,
-            padding = 8,
-            highlight_method = "border",
-            title_width_method = "uniform",
-            urgent_alert_method = "border",
-            urgent_border = colors[1],
-            rounded = False,
-            txt_floating = "🗗 ",
-            txt_maximized = "🗖 ",
-            txt_minimized = "🗕 ",
-        ),
-         widget.Sep(
-            linewidth = 0,
-            padding = 10
+            icon_size=0,
+            font="JetBrainsMono Nerd Font",
+            foreground=colors[5],
+            background='#162028',
+            borderwidth=0,
+            border=colors[1],
+            margin=0,
+            padding=8,
+            highlight_method="border",
+            title_width_method="uniform",
+            urgent_alert_method="border",
+            urgent_border=colors[1],
+            rounded=False,
+            txt_floating="🗗 ",
+            txt_maximized="🗖 ",
+            txt_minimized="🗕 ",
         ),
         widget.Sep(
-            linewidth = 1,
-            padding = 10,
-            foreground = colors[5],
-            background = backgroundColor
+            linewidth=0,
+            padding=10
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10
+            linewidth=1,
+            padding=10,
+            foreground=colors[5],
+            background=backgroundColor
+        ),
+        widget.Sep(
+            linewidth=0,
+            padding=10
         ),
         widget.TextBox(
-            text = " ",
-            fontsize = 20,
-            font = "JetBrainsMono Nerd Font",
-            foreground = colors[3],
+            text=" ",
+            fontsize=20,
+            font="JetBrainsMono Nerd Font",
+            foreground=colors[3],
         ),
         widget.CPU(
-            font = "JetBrainsMono Nerd Font",
-            update_interval = 1.0,
-            format = '{load_percent}%',
-            foreground = foregroundColor,
-            padding = 5
+            font="JetBrainsMono Nerd Font",
+            update_interval=1.0,
+            format='{load_percent}%',
+            foreground=foregroundColor,
+            padding=5
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10
+            linewidth=0,
+            padding=10
         ),
         widget.TextBox(
-            text = "",
-            fontsize = 18,
-            font = "JetBrainsMono Nerd Font",
-            foreground = colors[7],
+            text="",
+            fontsize=18,
+            font="JetBrainsMono Nerd Font",
+            foreground=colors[7],
         ),
         widget.Memory(
-            font = "JetBrainsMono Nerd Font",
-            foreground = foregroundColor,
-            format = '{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
+            font="JetBrainsMono Nerd Font",
+            foreground=foregroundColor,
+            format='{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
             measure_mem='G',
-            padding = 5,
+            padding=5,
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10
+            linewidth=0,
+            padding=10
         ),
         widget.TextBox(
-            text = "󰂏 ",
-            fontsize = 18,
-            font = "JetBrainsMono Nerd Font",
-            foreground = colors[5],
+            text="󰂏 ",
+            fontsize=20,
+            font="JetBrainsMono Nerd Font",
+            foreground=colors[5],
         ),
         widget.Battery(
             font="JetBrainsMono Nerd Font",
@@ -299,52 +318,55 @@ def init_widgets_list(monitor_num):
             format='{percent:2.0%}{char}',
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10
+            linewidth=0,
+            padding=10
         ),
         widget.TextBox(
-            text = " ",
-            fontsize = 16,
-            font = "JetBrainsMono Nerd Font",
-            foreground = colors[10],
+            text=" ",
+            fontsize=18,
+            font="JetBrainsMono Nerd Font",
+            foreground=colors[10],
         ),
         widget.Clock(
             format='%I:%M %p',
-            font = "JetBrainsMono Nerd Font",
-            padding = 10,
-            foreground = foregroundColor
+            font="JetBrainsMono Nerd Font",
+            padding=10,
+            foreground=foregroundColor
         ),
         widget.Systray(
-            background = backgroundColor,
-            icon_size = 20,
-            padding = 4,
+            background=backgroundColor,
+            icon_size=20,
+            padding=4,
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 8,
+            linewidth=0,
+            padding=8,
         ),
         widget.Sep(
-            linewidth = 1,
-            padding = 10,
-            foreground = colors[5],
-            background = backgroundColor
+            linewidth=1,
+            padding=10,
+            foreground=colors[5],
+            background=backgroundColor
         ),
         widget.CurrentLayoutIcon(
-            scale = 0.5,
-            foreground = foregroundColor,
-            background = backgroundColor
+            scale=0.5,
+            foreground=foregroundColor,
+            background=backgroundColor
         ),
-        widget.Wallpaper(
-            directory="/home/david/Imágenes/wallpapers",
-            label=""),
+        widget.Sep(
+            linewidth=0,
+            padding=10,
+        ),
     ]
 
     return widgets_list
+
 
 def init_secondary_widgets_list(monitor_num):
     secondary_widgets_list = init_widgets_list(monitor_num)
     del secondary_widgets_list[21:22]
     return secondary_widgets_list
+
 
 widgets_list = init_widgets_list("1")
 secondary_widgets_list = init_secondary_widgets_list("2")
@@ -353,29 +375,35 @@ secondary_widgets_list_2 = init_secondary_widgets_list("3")
 # Define 3 monitors
 screens = [
     Screen(
+        wallpaper='/home/david/Imágenes/wallpapers/bg1.jpg',
+        wallpaper_mode='fill',
         top=bar.Bar(
             widgets=widgets_list,
             size=45,
             background='#0b141a',
-            margin=10, 
+            margin=10,
             opacity=0.8
         ),
     ),
     Screen(
+        wallpaper='/home/david/Imágenes/wallpapers/bg1.jpg',
+        wallpaper_mode='fill',
         top=bar.Bar(
             widgets=secondary_widgets_list,
             size=45,
             background='#0b141a',
-            margin=10, 
+            margin=10,
             opacity=0.8
         ),
     ),
     Screen(
+        wallpaper='/home/david/Imágenes/wallpapers/bg1.jpg',
+        wallpaper_mode='fill',
         top=bar.Bar(
             widgets=secondary_widgets_list_2,
             size=45,
             background='#0b141a',
-            margin=10, 
+            margin=10,
             opacity=0.8
         ),
     ),
@@ -390,10 +418,10 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
-#Currently running Qtile in XFCE, so autostart script isn't necessary.  Uncomment if needed.
-#Startup applications
-#@hook.subscribe.startup_once
-#def autostart():
+# Currently running Qtile in XFCE, so autostart script isn't necessary.  Uncomment if needed.
+# Startup applications
+# @hook.subscribe.startup_once
+# def autostart():
 #   home = os.path.expanduser('~/.config/qtile/scripts/autostart.sh')
 #   subprocess.run([home])
 
@@ -411,8 +439,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='ssh-askpass'),  # ssh-askpass
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
-    Match(wm_class='Mailspring'), # Mail client
-], fullscreen_border_width = 0, border_width = 0)
+    Match(wm_class='Mailspring'),  # Mail client
+], fullscreen_border_width=0, border_width=0)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
@@ -429,5 +457,4 @@ auto_minimize = True
 #
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
-wmname = "Qtile 0.21.0"
-
+wmname = "Qtile 0.22.2"
