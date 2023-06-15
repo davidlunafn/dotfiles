@@ -34,7 +34,8 @@ keys = [
     Key([mod], "m", lazy.layout.next(),
         desc="Move window focus to other window"),
 
-    Key([mod], "space", lazy.spawn("rofi -show drun"), desc="Launch rofi"),
+    Key([mod], "space", lazy.spawn(
+        "bash /home/david/.config/rofi/launchers/type-3/launcher.sh"), desc="Launch rofi"),
     Key([mod], "o", lazy.hide_show_bar("top"), desc="hide bar"),
 
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
