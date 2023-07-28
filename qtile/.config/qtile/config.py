@@ -12,19 +12,24 @@ import colors
 mod = "mod4"
 terminal = "kitty"
 
+
 autostart = [
     "setxkbmap latam",
     "xset dpms 0 0 0",
     "xset -dpms",
     "xrandr --output eDP-1 --mode 1920x1080 --scale 0.75x0.75",
     "picom &",
-    # "xrandr --output HDMI-1 --same-as eDP-1"
+    "nm-applet &",
+    "blueman-applet &"
 ]
+
 
 for x in autostart:
     os.system(x)
 
-lockout_time = 60
+idle_activation_enabled = False
+idle_activation_delay = 0
+
 
 keys = [
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -85,8 +90,9 @@ keys = [
         "bash /home/david/.config/qtile/scripts/brightness-control.sh down"), desc="Bajar Brillo"),
 
     # Captura de pantalla
-    Key([], "print", lazy.spawn("scrot -s"), desc="Captura de pantalla"),
-    Key([mod], "Print", lazy.spawn("scrot"), desc="Subir Volumen"),
+    Key([], "print", lazy.spawn("scrot -s --freeze -o '/home/david/Imágenes/Capturas/%Y-%m-%d_%H:%M:%S.png' -l opacity=10 -q 100 -e 'xclip -selection clipboard -t image/png -i $f'"), desc="Captura de pantalla selección"),
+    Key([mod], "Print", lazy.spawn("scrot -o '/home/david/Imágenes/Capturas/%Y-%m-%d_%H:%M:%S.png' -l opacity=10 -q 100 -e 'xclip -selection clipboard -t image/png -i $f'"),
+        desc="Captura de pantalla completa"),
 
     # Run emacs
     Key([mod], "e", lazy.spawn("code"), desc="run vscode"),
@@ -442,20 +448,16 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='Mailspring'),  # Mail client
 ], fullscreen_border_width=0, border_width=0)
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
-
-# If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
 auto_minimize = True
 
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-# string besides java UI toolkits; you can see several discussions on the
-# mailing lists, GitHub issues, and other WM documentation that suggest setting
-# this string if your java app doesn't work correctly. We may as well just lie
-# and say that we're a working one by default.
-#
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
+
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser("~/.config/qtile/autostart.sh")
+    subprocess.call([home])
+
 wmname = "Qtile 0.22.2"
