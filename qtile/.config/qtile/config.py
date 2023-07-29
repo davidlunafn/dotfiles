@@ -89,6 +89,11 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn(
         "bash /home/david/.config/qtile/scripts/brightness-control.sh down"), desc="Bajar Brillo"),
 
+    Key([mod], "XF86MonBrightnessUp", lazy.spawn(
+        "redshift -O 6500K -r -P"), desc="modo dia"),
+    Key([mod], "XF86MonBrightnessDown", lazy.spawn(
+        "redshift -O 4500K -r -P"), desc="modo nocturno"),
+
     # Captura de pantalla
     Key([], "print", lazy.spawn("scrot -s --freeze -o '/home/david/Imágenes/Capturas/%Y-%m-%d_%H:%M:%S.png' -l opacity=10 -q 100 -e 'xclip -selection clipboard -t image/png -i $f'"), desc="Captura de pantalla selección"),
     Key([mod], "Print", lazy.spawn("scrot -o '/home/david/Imágenes/Capturas/%Y-%m-%d_%H:%M:%S.png' -l opacity=10 -q 100 -e 'xclip -selection clipboard -t image/png -i $f'"),
@@ -459,5 +464,6 @@ auto_minimize = True
 def start_once():
     home = os.path.expanduser("~/.config/qtile/autostart.sh")
     subprocess.call([home])
+
 
 wmname = "Qtile 0.22.2"
