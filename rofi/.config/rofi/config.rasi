@@ -104,6 +104,8 @@ configuration {
       delay:  0;
     }
 
+	kb-cancel: "Escape,Control+g,Control+bracketleft";
+
 	/*---------- Keybindings ----------*/
 /*
 	kb-primary-paste: "Control+V,Shift+Insert";

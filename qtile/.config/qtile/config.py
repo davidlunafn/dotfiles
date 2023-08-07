@@ -9,6 +9,7 @@ from libqtile.lazy import lazy
 from settings.path import qtile_path
 import colors
 
+
 mod = "mod4"
 terminal = "kitty"
 
@@ -31,7 +32,19 @@ idle_activation_enabled = False
 idle_activation_delay = 0
 
 
+def logout_session(qtile):
+    qtile.shutdown()
+
+
 keys = [
+    ######### KEY BILDINGS FOR IPAD SESSION #####################
+    Key(['mod1'], "space", lazy.spawn(
+        "bash /home/david/.config/rofi/launchers/type-3/launcher.sh"), desc="Launch rofi"),
+    Key(['mod1'], "q", lazy.window.kill(), desc="Kill focused window"),
+
+
+    ######### KEY BILDINGS FOR DESKTOP SESSION #####################
+    Key([mod, 'mod1'], 'x', lazy.function(logout_session), desc='Logout'),
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
@@ -387,7 +400,7 @@ secondary_widgets_list_2 = init_secondary_widgets_list("3")
 # Define 3 monitors
 screens = [
     Screen(
-        wallpaper='/home/david/Imágenes/wallpapers/bg1.jpg',
+        wallpaper='/home/david/.config/qtile/wallpapers/bg3.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(
             widgets=widgets_list,
@@ -398,7 +411,7 @@ screens = [
         ),
     ),
     Screen(
-        wallpaper='/home/david/Imágenes/wallpapers/bg1.jpg',
+        wallpaper='/home/david/.config/qtile/wallpapers/bg3.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(
             widgets=secondary_widgets_list,
@@ -409,7 +422,7 @@ screens = [
         ),
     ),
     Screen(
-        wallpaper='/home/david/Imágenes/wallpapers/bg1.jpg',
+        wallpaper='/home/david/.config/qtile/wallpapers/bg3.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(
             widgets=secondary_widgets_list_2,
