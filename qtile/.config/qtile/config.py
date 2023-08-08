@@ -18,7 +18,7 @@ autostart = [
     "setxkbmap latam",
     "xset dpms 0 0 0",
     "xset -dpms",
-    "xrandr --output eDP-1 --mode 1920x1080 --scale 0.75x0.75",
+    "xrandr --output eDP1 --mode 1920x1080 --scale 1x1",
     "picom &",
     "nm-applet &",
     "blueman-applet &"
@@ -218,7 +218,7 @@ def init_widgets_list(monitor_num):
     widgets_list = [
         widget.TextBox(
             text="  ",
-            fontsize=24,
+            fontsize=22,
             font="JetBrainsMono Nerd Font",
             foreground=colors[7],
         ),
@@ -230,7 +230,7 @@ def init_widgets_list(monitor_num):
         ),
         widget.GroupBox(
             font="JetBrainsMono Nerd Font",
-            fontsize=18,
+            fontsize=22,
             padding_x=6,
             margin_x=6,
             active="#66afbb",
@@ -260,6 +260,7 @@ def init_widgets_list(monitor_num):
         ),
         widget.TaskList(
             icon_size=0,
+            fontsize=22,
             font="JetBrainsMono Nerd Font",
             foreground=colors[5],
             background='#162028',
@@ -292,7 +293,7 @@ def init_widgets_list(monitor_num):
         ),
         widget.TextBox(
             text=" ",
-            fontsize=20,
+            fontsize=22,
             font="JetBrainsMono Nerd Font",
             foreground=colors[3],
         ),
@@ -301,7 +302,8 @@ def init_widgets_list(monitor_num):
             update_interval=1.0,
             format='{load_percent}%',
             foreground=foregroundColor,
-            padding=5
+            padding=5,
+            fontsize=22
         ),
         widget.Sep(
             linewidth=0,
@@ -309,7 +311,7 @@ def init_widgets_list(monitor_num):
         ),
         widget.TextBox(
             text="",
-            fontsize=18,
+            fontsize=22,
             font="JetBrainsMono Nerd Font",
             foreground=colors[7],
         ),
@@ -319,6 +321,7 @@ def init_widgets_list(monitor_num):
             format='{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
             measure_mem='G',
             padding=5,
+            fontsize=22,
         ),
         widget.Sep(
             linewidth=0,
@@ -326,7 +329,7 @@ def init_widgets_list(monitor_num):
         ),
         widget.TextBox(
             text="󰂏 ",
-            fontsize=20,
+            fontsize=22,
             font="JetBrainsMono Nerd Font",
             foreground=colors[5],
         ),
@@ -341,6 +344,7 @@ def init_widgets_list(monitor_num):
             discharge_char='',
             update_interval=1,
             format='{percent:2.0%}{char}',
+            fontsize=22
         ),
         widget.Sep(
             linewidth=0,
@@ -348,19 +352,20 @@ def init_widgets_list(monitor_num):
         ),
         widget.TextBox(
             text=" ",
-            fontsize=18,
+            fontsize=22,
             font="JetBrainsMono Nerd Font",
             foreground=colors[10],
         ),
         widget.Clock(
             format='%I:%M %p',
             font="JetBrainsMono Nerd Font",
+            fontsize=22,
             padding=10,
             foreground=foregroundColor
         ),
         widget.Systray(
             background=backgroundColor,
-            icon_size=20,
+            icon_size=22,
             padding=4,
         ),
         widget.Sep(
@@ -404,7 +409,7 @@ screens = [
         wallpaper_mode='fill',
         top=bar.Bar(
             widgets=widgets_list,
-            size=45,
+            size=50,
             background='#0b141a',
             margin=10,
             opacity=0.8
@@ -415,7 +420,7 @@ screens = [
         wallpaper_mode='fill',
         top=bar.Bar(
             widgets=secondary_widgets_list,
-            size=45,
+            size=50,
             background='#0b141a',
             margin=10,
             opacity=0.8
@@ -426,7 +431,7 @@ screens = [
         wallpaper_mode='fill',
         top=bar.Bar(
             widgets=secondary_widgets_list_2,
-            size=45,
+            size=50,
             background='#0b141a',
             margin=10,
             opacity=0.8
