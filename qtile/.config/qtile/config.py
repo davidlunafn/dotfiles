@@ -18,10 +18,11 @@ autostart = [
     "setxkbmap latam",
     "xset dpms 0 0 0",
     "xset -dpms",
-    "xrandr --output eDP1 --mode 1920x1080 --scale 1x1",
+    "xrandr --output eDP-1 --mode 1920x1080 --scale 1x1",
     "picom &",
     "nm-applet &",
-    "blueman-applet &"
+    "blueman-applet &",
+    "pgadmin4 &"
 ]
 
 
@@ -115,7 +116,7 @@ keys = [
     # Run emacs
     Key([mod], "e", lazy.spawn("code"), desc="run vscode"),
     # Control de monitores
-    Key([mod], "P", lazy.spawn("python3 /home/david/.config/qtile/scripts/monitors.py"),
+    Key([mod], "p", lazy.spawn("python2 /home/david/.config/qtile/scripts/monitors.py"),
         desc="Configurar segundo monitor"),
 ]
 
