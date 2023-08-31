@@ -12,6 +12,7 @@ return {
         { "L3MON4D3/LuaSnip", version = "v1.*" },
         "windwp/nvim-autopairs",
     },
+    lazy=false,
     config = function ()
         require("david.completition")
     end

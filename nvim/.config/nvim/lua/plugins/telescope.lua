@@ -9,6 +9,7 @@ return {
         { "nvim-telescope/telescope-ui-select.nvim" },
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
+    lazy=false,
     config = function ()
         require("david.telescope.setup")
         require("david.telescope.mappings")

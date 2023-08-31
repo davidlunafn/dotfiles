@@ -4,6 +4,7 @@ return {
         { "nvim-lua/plenary.nvim" },
         { "nvim-treesitter/nvim-treesitter" },
     },
+    lazy=true,
     keys = { { "<leader>rr", function()
         require("telescope").extensions.refactoring.refactors()
     end, mode = { "n", "v" } } },

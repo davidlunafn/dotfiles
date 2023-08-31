@@ -3,6 +3,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
+    lazy=true,
     config = function()
         local gitsigns = require("gitsigns")
         gitsigns.setup({

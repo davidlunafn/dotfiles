@@ -6,6 +6,7 @@ return {
         "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim",
     },
+    lazy=true,
     config = function ()
         require('neo-tree').setup {
             filesystem = {
