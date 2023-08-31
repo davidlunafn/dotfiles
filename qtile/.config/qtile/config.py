@@ -123,13 +123,13 @@ keys = [
 # Create labels for groups and assign them a default layout.
 groups = []
 
-group_names = ["1", "2", "3", "4", "5"]
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 # group_labels = ["", "", "", "", "", "", "", "", "ﭮ", ""]
-group_labels = ["", "", "", "", ""]
+group_labels = ["", "", "", "", "", "", "", "", "", ""]
 
-group_layouts = ["monadtall", "monadtall",
-                 "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall",
+                 "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
 # Add group names, labels, and default layouts to the groups object.
 for i in range(len(group_names)):
@@ -219,14 +219,15 @@ def init_widgets_list(monitor_num):
     widgets_list = [
         widget.TextBox(
             text="  ",
-            fontsize=22,
+            fontsize=40,
             font="JetBrainsMono Nerd Font",
             foreground=colors[7],
+            padding=-10
         ),
         widget.Sep(
             linewidth=1,
             padding=20,
-            foreground=colors[5],
+            foreground=colors[4],
             background=backgroundColor
         ),
         widget.GroupBox(
@@ -243,7 +244,7 @@ def init_widgets_list(monitor_num):
             other_screen_border="#4a4e5c",
             other_current_screen_border="#4a4e5c",
             foreground=foregroundColor,
-            background="#162028",
+            background=backgroundColor,
         ),
         widget.Sep(
             linewidth=0,
@@ -252,7 +253,7 @@ def init_widgets_list(monitor_num):
         widget.Sep(
             linewidth=1,
             padding=0,
-            foreground=colors[5],
+            foreground=colors[4],
             background=backgroundColor
         ),
         widget.Sep(
@@ -263,17 +264,17 @@ def init_widgets_list(monitor_num):
             icon_size=0,
             fontsize=22,
             font="JetBrainsMono Nerd Font",
-            foreground=colors[5],
+            foreground=colors[4],
             background='#162028',
             borderwidth=0,
-            border=colors[1],
+            border=backgroundColor,
             margin=0,
             padding=8,
             highlight_method="border",
             title_width_method="uniform",
             urgent_alert_method="border",
-            urgent_border=colors[1],
-            rounded=False,
+            urgent_border='#162028',
+            rounded=True,
             txt_floating="🗗 ",
             txt_maximized="🗖 ",
             txt_minimized="🗕 ",
@@ -285,7 +286,7 @@ def init_widgets_list(monitor_num):
         widget.Sep(
             linewidth=1,
             padding=10,
-            foreground=colors[5],
+            foreground=colors[4],
             background=backgroundColor
         ),
         widget.Sep(
@@ -302,7 +303,7 @@ def init_widgets_list(monitor_num):
             font="JetBrainsMono Nerd Font",
             update_interval=1.0,
             format='{load_percent}%',
-            foreground=foregroundColor,
+            foreground=colors[4],
             padding=5,
             fontsize=22
         ),
@@ -318,7 +319,7 @@ def init_widgets_list(monitor_num):
         ),
         widget.Memory(
             font="JetBrainsMono Nerd Font",
-            foreground=foregroundColor,
+            foreground=colors[4],
             format='{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
             measure_mem='G',
             padding=5,
@@ -337,7 +338,7 @@ def init_widgets_list(monitor_num):
         widget.Battery(
             font="JetBrainsMono Nerd Font",
             low_percentage=0.25,
-            foreground=foregroundColor,
+            foreground=colors[4],
             background=backgroundColor,
             charge_char='',
             full_char='',
@@ -362,7 +363,7 @@ def init_widgets_list(monitor_num):
             font="JetBrainsMono Nerd Font",
             fontsize=22,
             padding=10,
-            foreground=foregroundColor
+            foreground=colors[4]
         ),
         widget.Systray(
             background=backgroundColor,
@@ -411,9 +412,9 @@ screens = [
         top=bar.Bar(
             widgets=widgets_list,
             size=50,
-            background='#0b141a',
+            background=backgroundColor,
             margin=10,
-            opacity=0.8
+            opacity=1.0
         ),
     ),
     Screen(
