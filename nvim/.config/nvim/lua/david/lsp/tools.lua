@@ -1,3 +1,0 @@
-return {
-	"go-debug-adapter",
-}

@@ -1,8 +1,4 @@
 vim.g.mapleader = " "
-vim.g.snippets = "luasnip"
-
-vim.g.david_color = "bluloco"
-vim.g.david_lualine_color = "material"
 
 local options = vim.o
 

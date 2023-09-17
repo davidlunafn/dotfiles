@@ -1,10 +1,9 @@
 return {
-    'projekt0n/github-nvim-theme',
-    lazy=false,
-    priority=1000,
+    'uloco/bluloco.nvim',
+    lazy = false,
+    priority = 1000,
+    dependencies = { 'rktjmp/lush.nvim' },
     config = function()
-        require("github-theme").setup({
-        })
-        vim.cmd("colorscheme github_dark")
-    end
+        vim.cmd('colorscheme bluloco')
+    end,
 }
