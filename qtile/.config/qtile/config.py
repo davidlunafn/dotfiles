@@ -242,7 +242,7 @@ def init_widgets_list(monitor_num):
             center_aligned=True,
             highlight_method="text",
             this_screen_border="#4a4e5c",
-            this_current_screen_border="#e08e79",
+            this_current_screen_border=colors[7],
             other_screen_border="#4a4e5c",
             other_current_screen_border="#4a4e5c",
             foreground=foregroundColor,
