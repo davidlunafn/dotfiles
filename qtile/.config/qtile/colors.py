@@ -164,7 +164,7 @@ def custom():
 			   ["#44475a", "#44475a"],  #light grey [1]
 			   ["#51576d", "#51576d"],  #foreground (white) [2]
 			   ["#80a0ff", "#80a0ff"],  #blue) [3]
-			   ["#b2ceee", "#b2ceee"],  #light blue [4]
+			   ["#C7CCD7", "#C7CCD7"],  #light blue [4]
 			   ["#8cc85f", "#8cc85f"],  #green [5]
 			   ["#ef9f76", "#ef9f76"],  #orange [6]
 			   ["#ff5189", "#ff5189"],  #pink [7]

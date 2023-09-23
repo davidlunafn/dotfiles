@@ -141,14 +141,14 @@ for i in range(len(group_names)):
         ))
 
 
-@hook.subscribe.setgroup
-def changegroup():
-    for g in range(len(group_names)):
-        if qtile.groups[g].windows:
-            qtile.groups[g].label = "󰊠"
-        else:
-            qtile.groups[g].label = ""
-    qtile.current_group.label = "󰮯"
+# @hook.subscribe.setgroup
+# def changegroup():
+#    for g in range(len(group_names)):
+#        if qtile.groups[g].windows:
+#            qtile.groups[g].label = "󰊠"
+#        else:
+#            qtile.groups[g].label = ""
+#    qtile.current_group.label = "󰮯"
 
 
 # Add group specific keybindings
@@ -218,18 +218,20 @@ widget_defaults = dict(
 def init_widgets_list(monitor_num):
     widgets_list = [
         widget.TextBox(
-            text="  ",
-            fontsize=40,
+            text="",
+            fontsize=45,
             font="JetBrainsMono Nerd Font",
             foreground=colors[7],
-            padding=-10
+            padding=20,
+            background=backgroundColor
         ),
         widget.Sep(
-            linewidth=1,
-            padding=20,
+            linewidth=0,
+            padding=650,
             foreground=colors[4],
             background=backgroundColor
         ),
+
         widget.GroupBox(
             font="JetBrainsMono Nerd Font",
             fontsize=22,
@@ -246,95 +248,38 @@ def init_widgets_list(monitor_num):
             foreground=foregroundColor,
             background=backgroundColor,
         ),
-        widget.Sep(
-            linewidth=0,
+
+        widget.CurrentLayoutIcon(
+            scale=0.5,
+            foreground=colors[4],
+            background=backgroundColor,
             padding=10,
         ),
+
         widget.Sep(
-            linewidth=1,
-            padding=0,
-            foreground=colors[4],
+            linewidth=0,
+            padding=340,
+            foreground="#FFFFFF",
             background=backgroundColor
-        ),
-        widget.Sep(
-            linewidth=0,
-            padding=10
-        ),
-        widget.TaskList(
-            icon_size=0,
-            fontsize=22,
-            font="JetBrainsMono Nerd Font",
-            foreground=colors[4],
-            background='#162028',
-            borderwidth=0,
-            border=backgroundColor,
-            margin=0,
-            padding=8,
-            highlight_method="border",
-            title_width_method="uniform",
-            urgent_alert_method="border",
-            urgent_border='#162028',
-            rounded=True,
-            txt_floating="🗗 ",
-            txt_maximized="🗖 ",
-            txt_minimized="🗕 ",
-        ),
-        widget.Sep(
-            linewidth=0,
-            padding=10
-        ),
-        widget.Sep(
-            linewidth=1,
-            padding=10,
-            foreground=colors[4],
-            background=backgroundColor
-        ),
-        widget.Sep(
-            linewidth=0,
-            padding=10
-        ),
-        widget.TextBox(
-            text=" ",
-            fontsize=22,
-            font="JetBrainsMono Nerd Font",
-            foreground=colors[3],
         ),
         widget.CPU(
             font="JetBrainsMono Nerd Font",
             update_interval=1.0,
-            format='{load_percent}%',
+            format='    \n{load_percent:.0f}% ',
+            max_chars=9,
             foreground=colors[4],
-            padding=5,
-            fontsize=22
-        ),
-        widget.Sep(
-            linewidth=0,
-            padding=10
-        ),
-        widget.TextBox(
-            text="",
-            fontsize=22,
-            font="JetBrainsMono Nerd Font",
-            foreground=colors[7],
+            padding=2,
+            fontsize=16
         ),
         widget.Memory(
             font="JetBrainsMono Nerd Font",
             foreground=colors[4],
-            format='{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
+            format='   \n{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
             measure_mem='G',
-            padding=5,
-            fontsize=22,
+            padding=2,
+            fontsize=16,
         ),
-        widget.Sep(
-            linewidth=0,
-            padding=10
-        ),
-        widget.TextBox(
-            text="󰂏 ",
-            fontsize=22,
-            font="JetBrainsMono Nerd Font",
-            foreground=colors[5],
-        ),
+
         widget.Battery(
             font="JetBrainsMono Nerd Font",
             low_percentage=0.25,
@@ -345,45 +290,40 @@ def init_widgets_list(monitor_num):
             unknown_char='',
             discharge_char='',
             update_interval=1,
-            format='{percent:2.0%}{char}',
-            fontsize=22
+            format='  󰂏 \n{percent: 2.0%}{char}',
+            fontsize=16
         ),
         widget.Sep(
             linewidth=0,
             padding=10
         ),
-        widget.TextBox(
-            text=" ",
-            fontsize=22,
-            font="JetBrainsMono Nerd Font",
-            foreground=colors[10],
-        ),
         widget.Clock(
-            format='%I:%M %p',
+            format='  \n%I:%M',
             font="JetBrainsMono Nerd Font",
-            fontsize=22,
+            fontsize=16,
             padding=10,
-            foreground=colors[4]
+            foreground=colors[4],
+            background=backgroundColor
         ),
         widget.Systray(
             background=backgroundColor,
             icon_size=22,
-            padding=4,
+            padding=5,
         ),
         widget.Sep(
             linewidth=0,
-            padding=8,
-        ),
-        widget.Sep(
-            linewidth=1,
             padding=10,
-            foreground=colors[5],
+            foreground="#FFFFFF",
             background=backgroundColor
         ),
-        widget.CurrentLayoutIcon(
-            scale=0.5,
-            foreground=foregroundColor,
-            background=backgroundColor
+        widget.QuickExit(
+            default_text='󰤆 ',
+            countdown_format='{}',
+            font="JetBrainsMono Nerd Font",
+            fontsize=30,
+            padding=20,
+            background=backgroundColor,
+            foreground=colors[7]
         ),
         widget.Sep(
             linewidth=0,
@@ -411,9 +351,9 @@ screens = [
         wallpaper_mode='fill',
         top=bar.Bar(
             widgets=widgets_list,
-            size=50,
+            size=60,
             background=backgroundColor,
-            margin=10,
+            margin=5,
             opacity=1.0
         ),
     ),
