@@ -225,11 +225,8 @@ def init_widgets_list(monitor_num):
             padding=20,
             background=backgroundColor
         ),
-        widget.Sep(
-            linewidth=0,
-            padding=650,
-            foreground=colors[4],
-            background=backgroundColor
+        widget.Spacer(
+            length=bar.STRETCH
         ),
 
         widget.GroupBox(
@@ -255,13 +252,13 @@ def init_widgets_list(monitor_num):
             background=backgroundColor,
             padding=10,
         ),
-
-        widget.Sep(
-            linewidth=0,
-            padding=340,
-            foreground="#FFFFFF",
-            background=backgroundColor
+        widget.Spacer(
+            length=100
         ),
+        widget.Spacer(
+            length=bar.STRETCH
+        ),
+
         widget.CPU(
             font="JetBrainsMono Nerd Font",
             update_interval=1.0,
@@ -292,10 +289,6 @@ def init_widgets_list(monitor_num):
             update_interval=1,
             format='  󰂏 \n{percent: 2.0%}{char}',
             fontsize=16
-        ),
-        widget.Sep(
-            linewidth=0,
-            padding=10
         ),
         widget.Clock(
             format='  \n%I:%M',
